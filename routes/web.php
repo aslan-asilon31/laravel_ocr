@@ -31,6 +31,7 @@ Route::resource('ktp', KtpController::class);
 Route::get('ktp-scan', [KtpController::class,'scan'])->name('ktp.scan');
 Route::resource('purchase-order', LembarPoController::class);
 Route::resource('tax-invoice', TaxInvoiceController::class);
+Route::get('tax-invoice-scan', [TaxInvoiceController::class,'scan'])->name('tax-invoice.scan');
 Route::resource('ijasah', IjasahController::class);
 Route::resource('transkrip-nilai', TranskripNilaiController::class);
 Route::resource('exam-proctoring', ExamProctoringController::class);

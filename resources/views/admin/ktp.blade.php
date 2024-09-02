@@ -17,7 +17,7 @@
                 <div class="card-body box-profile">
                 <h6>Upload image here</h6>
                 <img id="image-preview" style="max-width: 300px;" class="img-preview"
-                    src="./dist/img/no-image-ktp.png" alt="Preview Gambar">
+                    src="{{asset('no-image-ktp.png')}}" alt="Preview Gambar">
                 <!-- <form id="upload-form" class="mt-10"> -->
                 <form action="{{ route('ktp.scan')}}" id="upload-form" class="mt-10">
                     <div class="" style="display: flex; justify-content: space-between;">
@@ -42,197 +42,196 @@
                 <div class="card-body">
                 <div class="tab-content">
                     <div class="active tab-pane" id="activity">
-                    <form class="form-horizontal">
-                                <div class="form-group row">
-                                  <label for="inputName" class="col-sm-4 col-form-label">Nama</label>
-                                                                   
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputName" value=""
-                                    placeholder="Nama...">
-                                  </div>
+                        <form class="form-horizontal">
+                          <div class="form-group row">
+                            <label for="inputName" class="col-sm-4 col-form-label">Nama</label>
+                                                              
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputName" value=""
+                              placeholder="Nama...">
+                            </div>
 
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputNIK" class="col-sm-4 col-form-label">NIK</label>
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputNIK" value=""
-                                    placeholder="NIK...">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputTempatLahir" class="col-sm-4 col-form-label">Tempat Lahir</label>
-                                 
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputTempatLahir" value=""
-                                    placeholder="Tempat Lahir...">
-                                  </div>
-                                  <div class="col-sm-10">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputTanggalLahir" class="col-sm-6 col-form-label">Tanggal Lahir</label>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputNIK" class="col-sm-4 col-form-label">NIK</label>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputNIK" value=""
+                              placeholder="NIK...">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputTempatLahir" class="col-sm-4 col-form-label">Tempat Lahir</label>
+                            
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputTempatLahir" value=""
+                              placeholder="Tempat Lahir...">
+                            </div>
+                            <div class="col-sm-10">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputTanggalLahir" class="col-sm-6 col-form-label">Tanggal Lahir</label>
 
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="date" class="form-control" id="inputTanggalLahir" value=""
-                                    placeholder="Tanggal Lahir...">
-                                  </div>
-                                  <div class="col-sm-10">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputKecamatan" class="col-sm-4 col-form-label">Golongan Darah</label>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="date" class="form-control" id="inputTanggalLahir" value=""
+                              placeholder="Tanggal Lahir...">
+                            </div>
+                            <div class="col-sm-10">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputKecamatan" class="col-sm-4 col-form-label">Golongan Darah</label>
 
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputGolonganDarah" value=""
-                                    placeholder="Golongan Darah...">
-                                  </div>
-                                  
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputAlamat" class="col-sm-4 col-form-label">Alamat</label>
-                                  <textarea class="form-control" id="inputAlamat" placeholder="Alamat..."></textarea>
-                                
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputAlamat" class="col-sm-4 col-form-label">RT/RW</label>
-                                  <textarea class="form-control" id="inputRTRW" placeholder="RT/RW..."></textarea>
-                                
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputKelurahan" class="col-sm-4 col-form-label">Kel/Desa</label>
-                               
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputKelurahan" value=""
-                                    placeholder="Kelurahan...">
-                                  </div>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputGolonganDarah" value=""
+                              placeholder="Golongan Darah...">
+                            </div>
+                            
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputAlamat" class="col-sm-4 col-form-label">Alamat</label>
+                            <textarea class="form-control" id="inputAlamat" placeholder="Alamat..."></textarea>
+                          
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputAlamat" class="col-sm-4 col-form-label">RT/RW</label>
+                            <textarea class="form-control" id="inputRTRW" placeholder="RT/RW..."></textarea>
+                          
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputKelurahan" class="col-sm-4 col-form-label">Kel/Desa</label>
+                          
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputKelurahan" value=""
+                              placeholder="Kelurahan...">
+                            </div>
 
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputKecamatan" class="col-sm-4 col-form-label">Kecamatan</label>
-                               
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputKecamatan" value=""
-                                    placeholder="Kecamatan...">
-                                  </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputKecamatan" class="col-sm-4 col-form-label">Kecamatan</label>
+                          
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputKecamatan" value=""
+                              placeholder="Kecamatan...">
+                            </div>
 
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputKabupaten" class="col-sm-4 col-form-label">Kabupaten</label>
-                               
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputKabupaten" value=""
-                                    placeholder="Kabupaten...">
-                                  </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputKabupaten" class="col-sm-4 col-form-label">Kabupaten</label>
+                          
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputKabupaten" value=""
+                              placeholder="Kabupaten...">
+                            </div>
 
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputProvinsi" class="col-sm-4 col-form-label">Provinsi</label>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputProvinsi" class="col-sm-4 col-form-label">Provinsi</label>
 
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputProvinsi" value=""
-                                    placeholder="Provinsi...">
-                                  </div>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputProvinsi" value=""
+                              placeholder="Provinsi...">
+                            </div>
 
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputKecamatan" class="col-sm-4 col-form-label">Agama</label>
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputAgama" value=""
-                                    placeholder="Agama...">
-                                  </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputKecamatan" class="col-sm-4 col-form-label">Agama</label>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputAgama" value=""
+                              placeholder="Agama...">
+                            </div>
 
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputKecamatan" class="col-sm-4 col-form-label">Status Perkawinan</label>
-                               
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputStatusPerkawinan" value=""
-                                    placeholder="Status Perkawinan...">
-                                  </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputKecamatan" class="col-sm-4 col-form-label">Status Perkawinan</label>
+                          
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputStatusPerkawinan" value=""
+                              placeholder="Status Perkawinan...">
+                            </div>
 
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputKecamatan" class="col-sm-4 col-form-label">Pekerjaan</label>
-                                
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputPekerjaan" value=""
-                                    placeholder="Pekerjaan...">
-                                  </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputKecamatan" class="col-sm-4 col-form-label">Pekerjaan</label>
+                          
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputPekerjaan" value=""
+                              placeholder="Pekerjaan...">
+                            </div>
 
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputKecamatan" class="col-sm-4 col-form-label">Kewarganegaraan</label>
-                                  
-                               
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputKewarganegaraan" value=""
-                                    placeholder="Kewarganegaraan...">
-                                  </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputKecamatan" class="col-sm-4 col-form-label">Kewarganegaraan</label>
+                            
+                          
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputKewarganegaraan" value=""
+                              placeholder="Kewarganegaraan...">
+                            </div>
 
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputKecamatan" class="col-sm-4 col-form-label">Berlaku Hingga</label>
-                               
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="inputBerlakuHingga" value=""
-                                    placeholder="Berlaku Hingga...">
-                                  </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputKecamatan" class="col-sm-4 col-form-label">Berlaku Hingga</label>
+                          
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="inputBerlakuHingga" value=""
+                              placeholder="Berlaku Hingga...">
+                            </div>
 
-                                </div>
-                                <!-- Add other form fields here -->
-                                <div class="form-group row">
-                                  <div class="" style="display: flex; justify-content: space-between;">
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                    <button class="btn btn-danger" onclick="clearForm()">Clear Form</button>
-                                  </div>
-                                  <div class="offset-sm-4 col-sm-10">
+                          </div>
+                          <!-- Add other form fields here -->
+                          <div class="form-group row">
+                            <div class="" style="display: flex; justify-content: space-between;">
+                              <button type="submit" class="btn btn-primary">Save</button>
+                              <button class="btn btn-danger" onclick="clearForm()">Clear Form</button>
+                            </div>
+                            <div class="offset-sm-4 col-sm-10">
 
-                                  </div>
-                                </div>
-                              </form>
-                    <!-- /.post -->
+                            </div>
+                          </div>
+                        </form>
                     </div>
                 </div>
                 <!-- /.tab-content -->

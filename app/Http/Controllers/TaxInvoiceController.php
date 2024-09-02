@@ -10,4 +10,8 @@ class TaxInvoiceController extends Controller
         return view('admin.tax-invoice');
         
     }
+
+    public function scan(){
+        return view('admin.tax_invoice_scan');
+    }
 }

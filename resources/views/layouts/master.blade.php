@@ -176,7 +176,7 @@
               </li>
               <!-- KTP -->
               <li class="nav-item">
-                  <a href="{{ route('ktp.index') }}" class="nav-link text-white {{ request()->routeIs('ktp.index') ? 'active' : '' }}">
+                  <a href="{{ route('ktp.index') }}" class="nav-link text-white {{ request()->routeIs('ktp.index') || request()->routeIs('ktp.scan') ? 'active' : '' }}">
                       <i class="nav-icon fa fa-id-card"></i>
                       <p>KTP</p>
                   </a>
