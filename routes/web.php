@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IjasahController;
+use App\Http\Controllers\KtpController;
+use App\Http\Controllers\LembarPoController;
+use App\Http\Controllers\TaxInvoiceController;
+use App\Http\Controllers\TranskripNilaiController;
+use App\Http\Controllers\ExamProctoringController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +21,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Auth::routes();
+
+Route::resource('dashboard', DashboardController::class);
+Route::resource('ktp', KtpController::class);
+Route::get('ktp-scan', [KtpController::class,'scan'])->name('ktp.scan');
+Route::resource('purchase-order', LembarPoController::class);
+Route::resource('tax-invoice', TaxInvoiceController::class);
+Route::resource('ijasah', IjasahController::class);
+Route::resource('transkrip-nilai', TranskripNilaiController::class);
+Route::resource('exam-proctoring', ExamProctoringController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

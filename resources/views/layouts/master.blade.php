@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KTP</title>
+  <title>@yield('title')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -166,83 +166,78 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="dashboard.html" class="nav-link text-white ">
-              <i class="nav-icon fa fa-home"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="ktp.html" class="nav-link text-white active">
-              <i class="nav-icon fa fa-id-card"></i>
-              <p>
-                KTP
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="tax-invoice.html" class="nav-link text-white ">
-              <i class="nav-icon fa fa-file-invoice"></i>
-              <p>
-                Tax Invoice
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link text-white">
-              <i class="nav-icon fa fa-certificate"></i>
-              <p>
-                Certificate
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview ml-3">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Dashboard -->
               <li class="nav-item">
-                <a href="certificate.html" class="nav-link text-white">
-                  <i class="fa fa-graduation-cap nav-icon"></i>
-                  <p>Ijasah</p>
-                </a>
+                  <a href="{{ route('dashboard.index') }}" class="nav-link text-white {{ request()->routeIs('dashboard.index') ? 'active' : '' }}">
+                      <i class="nav-icon fa fa-home"></i>
+                      <p>Dashboard</p>
+                  </a>
               </li>
+              <!-- KTP -->
               <li class="nav-item">
-                <a href="academic-transcript.html" class="nav-link text-white">
-                  <i class="fa fa-book  nav-icon"></i>
-                  <p>Transkrip Nilai</p>
-                </a>
+                  <a href="{{ route('ktp.index') }}" class="nav-link text-white {{ request()->routeIs('ktp.index') ? 'active' : '' }}">
+                      <i class="nav-icon fa fa-id-card"></i>
+                      <p>KTP</p>
+                  </a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="exam-proctoring.html" class="nav-link text-white ">
-              <i class="nav-icon fa fa-user-check"></i>
-              <p>
-                Exam Proctoring
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="dashboard-erp.html" class="nav-link text-white ">
-              <i class="nav-icon fa fa-receipt"></i>
-              <p>
-                Lembar PO
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="dashboard-erp.html" class="nav-link text-white">
-              <i class="nav-icon fa fa-sign-out-alt"></i>
-              <p>
-                Sign Out
-              </p>
-            </a>
-          </li>
-
-        </ul>
+              <!-- Tax Invoice -->
+              <li class="nav-item">
+                  <a href="{{ route('tax-invoice.index') }}" class="nav-link text-white {{ request()->routeIs('tax-invoice.index') ? 'active' : '' }}">
+                      <i class="nav-icon fa fa-file-invoice"></i>
+                      <p>Tax Invoice</p>
+                  </a>
+              </li>
+              <!-- Certificate -->
+              <li class="nav-item">
+                  <a href="#" class="nav-link text-white {{ request()->routeIs('certificate.*') ? 'active' : '' }}">
+                      <i class="nav-icon fa fa-certificate"></i>
+                      <p>
+                          Certificate
+                          <i class="right fa fa-angle-left"></i>
+                      </p>
+                  </a>
+                  <ul class="nav nav-treeview ml-3">
+                      <!-- Ijasah -->
+                      <li class="nav-item">
+                          <a href="{{ route('ijasah.index') }}" class="nav-link text-white {{ request()->routeIs('ijasah.index') ? 'active' : '' }}">
+                              <i class="fa fa-graduation-cap nav-icon"></i>
+                              <p>Ijasah</p>
+                          </a>
+                      </li>
+                      <!-- Transkrip Nilai -->
+                      <li class="nav-item">
+                          <a href="{{ route('transkrip-nilai.index') }}" class="nav-link text-white {{ request()->routeIs('transkrip-nilai.index') ? 'active' : '' }}">
+                              <i class="fa fa-book nav-icon"></i>
+                              <p>Transkrip Nilai</p>
+                          </a>
+                      </li>
+                  </ul>
+              </li>
+              <!-- Exam Proctoring -->
+              <li class="nav-item">
+                  <a href="{{ route('exam-proctoring.index') }}" class="nav-link text-white {{ request()->routeIs('exam-proctoring.index') ? 'active' : '' }}">
+                      <i class="nav-icon fa fa-user-check"></i>
+                      <p>Exam Proctoring</p>
+                  </a>
+              </li>
+              <!-- Lembar PO -->
+              <li class="nav-item">
+                  <a href="{{ route('purchase-order.index') }}" class="nav-link text-white {{ request()->routeIs('purchase-order.index') ? 'active' : '' }}">
+                      <i class="nav-icon fa fa-receipt"></i>
+                      <p>Lembar PO</p>
+                  </a>
+              </li>
+              <!-- Sign Out -->
+              <li class="nav-item">
+                  <a href="{{ route('logout') }}" class="nav-link text-white">
+                      <i class="nav-icon fa fa-sign-out-alt"></i>
+                      <p>Sign Out</p>
+                  </a>
+              </li>
+          </ul>
       </nav>
+
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

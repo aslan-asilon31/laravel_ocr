@@ -1,0 +1,31 @@
+{
+    "compare": {
+        "compare_status": "True",
+        "compare_summary": "human check",
+        "similarity_percentage": "47.44878028989212",
+        "status": "success"
+    },
+    "data": {
+        "KTP_AGAMA": "ISLAM",
+        "KTP_ALAMAT": "JL. H. AL) SHOLHUN NO 54 CIBUBUR",
+        "KTP_BERLAKU_HINGGA": "SEUMUR HIDUP",
+        "KTP_DIKELUARKAN_DI": "JAKARTA TIMUR",
+        "KTP_DIKELUARKAN_TGL": "43191",
+        "KTP_GOL_DARAH": "A",
+        "KTP_JENIS_KELAMIN": "LAKI-LAKI",
+        "KTP_KABUPATEN_MADYA": "JAKARTA TIMUR",
+        "KTP_KECAMATAN": "CIRACAS",
+        "KTP_KELURAHAN": "CIDURURUK",
+        "KTP_KEWARGANEGARAAN": "WNI",
+        "KTP_NAMA": "ZAKI ARISAD",
+        "KTP_NIK": "3515151610740002",
+        "KTP_PEKERJAAN": "KARYAWAN SWASTA",
+        "KTP_PROVINSI": "PROVINSI DKI JAKARTA",
+        "KTP_RT_RW": "004/010",
+        "KTP_STATUS_PERKAWINAN": "KAWIN",
+        "KTP_TEMPAT_LAHIR": "SURABAYA",
+        "KTP_TGL_LAHIR": "15-10-1974"
+    },
+    "message": "Success ocr and compare KTP",
+    "success": true
+}
