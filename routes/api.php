@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+Route::get('/fetch-proctoring-data', function () {
+    $response = Http::get('http://localhost:3000/api/proctoring');
+    return $response->json();
+});

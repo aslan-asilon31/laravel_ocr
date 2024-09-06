@@ -15,18 +15,18 @@
                 </div>
                 <div class="card-body box-profile">
 
-                <div class="row">
-                    <div class="d-flex mb-2" hidden>
-                    <button hidden class="btn btn-sm btn-primary" id="startButton"><i class="fa fa-video"></i></button>
-                    <button hidden class="btn btn-sm btn-danger" id="stopButton"><i class="fa fa-video-slash"></i></button>
+                    <div class="row">
+                        <div class="d-flex mb-2" hidden>
+                        <button hidden class="btn btn-sm btn-primary" id="startButton"><i class="fa fa-video"></i></button>
+                        <button hidden class="btn btn-sm btn-danger" id="stopButton"><i class="fa fa-video-slash"></i></button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <video id="video" autoplay></video>
-                    <img id="image-preview" class="img-preview" src="{{asset('project-ocr')}}/dist/img/no-image-no-camera-found.png" alt="Preview Gambar">
-                </div>
-                
+                    <div class="row">
+                        <video id="video" autoplay></video>
+                        <img id="image-preview" class="img-preview" src="{{asset('project-ocr')}}/dist/img/no-image-no-camera-found.png" alt="Preview Gambar">
+                    </div>
+                    
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -61,4 +61,106 @@
         <!-- /.col -->
     </div>
     <!-- /.row -->
+
+
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const video = document.getElementById('video');
+            const imagePreview = document.getElementById('image-preview');
+
+            const userId = "12345"; // Contoh ID pengguna
+            const userName = "John Doe"; // Contoh nama pengguna
+
+            let stream;
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+                imagePreview.hidden = true;
+
+                // Data yang akan dikirim ke server
+                const data = {
+                    user: {
+                        id: userId,
+                        name: userName
+                    },
+                    cameraStatus: [
+                        {
+                            status: 'start',
+                            timestamp: new Date().toISOString()
+                        }
+                    ]
+                };
+
+                // Mengirim data ke server
+                fetch('/proctoring.json', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => console.log('Success:', data))
+                .catch((error) => console.error('Error:', error));
+
+            } catch (error) {
+                console.error('Error accessing camera: ', error);
+            }
+        });
+    </script>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', async function () {
+        const video = document.getElementById('video');
+        const imagePreview = document.getElementById('image-preview');
+
+        const userId = "aslan12345"; // Contoh ID pengguna
+        const userName = "aslan12345 Doe"; // Contoh nama pengguna
+
+        let stream;
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            video.srcObject = stream;
+            imagePreview.hidden = true;
+
+            // Data yang akan dikirim ke server
+            const data = {
+                user: {
+                    id: userId,
+                    name: userName
+                },
+                cameraStatus: [
+                    {
+                        status: 'start',
+                        timestamp: new Date().toISOString()
+                    },
+                    {
+                        status: 'stop',
+                        timestamp: new Date().toISOString()
+                    }
+                ]
+            };
+
+            // Mengirim data ke server Laravel
+            fetch('/send-proctoring-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => console.log('Success:', data))
+            .catch((error) => console.error('Error:', error));
+
+        } catch (error) {
+            console.error('Error accessing camera: ', error);
+        }
+    });
+</script>
+
 @endsection

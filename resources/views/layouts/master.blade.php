@@ -25,10 +25,25 @@
   <link rel="stylesheet" href="{{asset('project-ocr/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('project-ocr/plugins/summernote/summernote-bs4.min.css')}}">
+  @stack('styles')
+
+  <link rel="stylesheet" href="{{asset('project-ocr/plugins/codemirror/codemirror.css')}}">
+  <link rel="stylesheet" href="{{asset('project-ocr/plugins/codemirror/theme/monokai.css')}}">
+
   <!-- DataTables -->
   <link rel="stylesheet" href="{{asset('project-ocr/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('project-ocr/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('project-ocr/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  <style>
+  #pdf-preview, #image-preview {
+      display: none;
+      width: 100%;
+      height: 800px;
+  }
+  #pdf-preview {
+      border: none;
+  }
+</style>
   <style>
     .sidebar-color{
       color:white !important;
@@ -111,7 +126,7 @@
 
       <li class="dropdown user user-menu mt-2">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <img src="{{asset('project-ocr/')}}dist/img/avatar-3d/man.jpg" class="user-image" alt="User Image">
+          <img src="{{asset('project-ocr/dist/img/avatar-3d/man.jpg')}}" class="user-image" alt="User Image">
           <span class="hidden-xs">Sulaslan Setiawan</span>
         </a>
         <ul class="dropdown-menu">
@@ -119,7 +134,7 @@
           
 
           <li class="user-header">
-            <img src="{{asset('project-ocr/')}}dist/img/avatar-3d/man.jpg" class="img-circle" alt="User Image">
+            <img src="{{asset('project-ocr/dist/img/avatar-3d/man.jpg')}}" class="img-circle" alt="User Image">
             <p>
               Sulaslan Setiawan - Web Developer
               <small>Member since Nov. 2012</small>
@@ -144,7 +159,7 @@
   <aside class="main-sidebar  elevation-4" style="background-color:#333;color:white !important;font-weight:bolder;">
     <!-- Brand Logo -->
     <a href="javascript::void(0)" class="brand-link" style="height:60px;">
-      <img src="{{asset('project-ocr/')}}dist/img/ocr-logo.png" alt=" Logo" class="brand-image img-circle elevation-3 text-white" style="opacity: .8;width:100px;height:60px;text-align: center;">
+      <img src="{{asset('project-ocr/dist/img/ocr-logo.png')}}" alt=" Logo" class="brand-image img-circle elevation-3 text-white" style="opacity: .8;width:100px;height:60px;text-align: center;">
     </a>
 
     <!-- Sidebar -->
@@ -185,7 +200,7 @@
               <li class="nav-item">
                   <a href="{{ route('tax-invoice.index') }}" class="nav-link text-white {{ request()->routeIs('tax-invoice.index') ? 'active' : '' }}">
                       <i class="nav-icon fa fa-file-invoice"></i>
-                      <p>Tax Invoice</p>
+                      <p>Tax PPN</p>
                   </a>
               </li>
               <!-- Certificate -->
@@ -225,7 +240,7 @@
               <li class="nav-item">
                   <a href="{{ route('purchase-order.index') }}" class="nav-link text-white {{ request()->routeIs('purchase-order.index') ? 'active' : '' }}">
                       <i class="nav-icon fa fa-receipt"></i>
-                      <p>Lembar PO</p>
+                      <p>Purchase Order Sheet</p>
                   </a>
               </li>
               <!-- Sign Out -->
@@ -494,6 +509,10 @@
       "autoWidth": false,
       "responsive": true,
     });
+
+
+
+
   });
 </script>
 
@@ -576,5 +595,7 @@
 
 </script>
 <!-- end add more row  -->
+
+@stack('scripts')
 </body>
 </html>

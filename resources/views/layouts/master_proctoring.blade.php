@@ -700,7 +700,7 @@
       makeDraggable(profileCard);
       makeResizable(profileCard);
   });
-  </script>
+</script>
   
   
   

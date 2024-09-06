@@ -3,7 +3,7 @@
 @section('title','Tax Invoice')
 @section('content')
 
-<div class="row">
+        <div class="row">
           <div class="col-12">
 
             <div class="row">
@@ -15,17 +15,18 @@
                     <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
                   </div>
                   <div class="card-body box-profile">
-                    <h6>Upload invoice here </h6>
+                    <h6 class="">Upload a PDF or image file (JPEG, PNG, GIF, WebP, BMP, SVG) </h6>
                     <!-- Form Upload -->
-                    <form id="upload-form" class="mt-10">
-                        <div class="" style="display: flex;justify-content: space-between;">
-                            <input type="file" id="file-input-pdf" style="width: 200px;" accept="application/pdf" required onchange="showPDF()">
-                            <a href="{{route('tax-invoice.scan')}}" class="btn bg-dark " style="width: 100px;">Scan</a>
+                    <form action="{{route('tax-invoice.scan')}}" id="upload-form" class="">
+                        <div style="display: flex; justify-content: space-between;">
+                            <input type="file" id="file-input" style="width: 200px;" accept=".pdf, image/*" required onchange="handleFile()">
+                            <button type="submit" class="btn bg-dark" style="width: 100px;">Scan</button>
                         </div>
                     </form>
                 
-                    <!-- Iframe to display PDF -->
-                    <iframe id="pdf-iframe" style="outline: none !important;border: none;" src="" width="100%" height="800"></iframe>
+                    <!-- Iframe to display PDF/image -->
+                    <iframe id="pdf-preview" style="outline: none !important; border: none;" src="" width="100%" height="800"></iframe>  
+                    <img id="image-preview" alt="Image Preview">
                   </div>
                 
                   <!-- /.card-body -->
@@ -46,7 +47,7 @@
                       <div class="active tab-pane" id="activity">
                         <form class="form-horizontal">
                           <div class="form-group row">
-                              <label for="inputInvoiceNo" class="col-sm-4 col-form-label">Invoice No</label>
+                              <label for="inputInvoiceNo" class="col-sm-4 col-form-label">Nomor Faktur </label>
                               <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-terminal"></i></span>
@@ -174,11 +175,9 @@
                           <div class="form-group row">
                             <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Deskripsi Item</label>
                             <textarea class="form-control" id="desckripsiItem" name="desckripsiItem" value="" placeholder="deskripsi item..."></textarea>
-                         
-                              
                           </div>
                           <div class="form-group row">
-                              <div class="offset-sm-2 col-sm-10">
+                              <div class=" col-sm-10">
                                   <button type="submit" class="btn btn-primary">Submit</button>
                               </div>
                           </div>
@@ -202,69 +201,63 @@
         <!-- /.row -->
 
 
-        <script>
-    function previewPDF() {
-        const fileInput = document.getElementById('file-input-pdf');
-        const file = fileInput.files[0];
-
-        if (file && file.type === 'application/pdf') {
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                const typedArray = new Uint8Array(e.target.result);
-
-                pdfjsLib.getDocument(typedArray).promise.then(function(pdf) {
-                    // Ensure there are at least two pages
-                    if (pdf.numPages >= 2) {
-                        // Render the first page
-                        renderPage(pdf, 1, 'pdf-preview1');
-                        // Render the second page
-                        renderPage(pdf, 2, 'pdf-preview2');
-                    } else {
-                        alert('PDF harus memiliki setidaknya 2 halaman.');
-                    }
-                });
-            };
-
-            reader.readAsArrayBuffer(file);
-        } else {
-            alert('Silakan unggah file PDF.');
-        }
-    }
-
-    function renderPage(pdf, pageNumber, canvasId) {
-        pdf.getPage(pageNumber).then(function(page) {
-            const canvas = document.getElementById(canvasId);
-            const context = canvas.getContext('2d');
-            const viewport = page.getViewport({ scale: 1.5 });
-
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-
-            const renderContext = {
-                canvasContext: context,
-                viewport: viewport
-            };
-
-            page.render(renderContext);
-        });
-    }
-</script>
-
-
-
+        
+        
 <script>
-  function showPDF() {
-      const fileInput = document.getElementById('file-input-pdf');
+  function handleFile() {
+      const fileInput = document.getElementById('file-input');
       const file = fileInput.files[0];
+      const pdfPreview = document.getElementById('pdf-preview');
+      const imagePreview = document.getElementById('image-preview');
 
-      if (file && file.type === 'application/pdf') {
-          const fileURL = URL.createObjectURL(file);
-          document.getElementById('pdf-iframe').src = fileURL;
-      } else {
-          alert('Please upload a valid PDF file.');
+      if (file) {
+          const fileType = file.type;
+
+          if (fileType === 'application/pdf') {
+              // Display PDF
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  pdfPreview.src = e.target.result;
+                  pdfPreview.style.display = 'block';
+                  imagePreview.style.display = 'none';
+              };
+              reader.readAsDataURL(file);
+          } else if (fileType.startsWith('image/')) {
+              // Display image
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  imagePreview.src = e.target.result;
+                  imagePreview.style.display = 'block';
+                  pdfPreview.style.display = 'none';
+              };
+              reader.readAsDataURL(file);
+          } else {
+              alert('File type not supported. Please upload a PDF or an image.');
+          }
       }
   }
 </script>
 
+<script>
+  
+  function clearForm() {
+            document.getElementById("inputName").value = '';
+            document.getElementById("inputNIK").value = '';
+            document.getElementById("inputTempatLahir").value = '';
+            document.getElementById("inputTanggalLahir").value = '';
+            document.getElementById("inputGolonganDarah").value = '';
+            document.getElementById("inputAlamat").value = '';
+            document.getElementById("inputRTRW").value = '';
+            document.getElementById("inputKelurahan").value = '';
+            document.getElementById("inputKecamatan").value = '';
+            document.getElementById("inputKabupaten").value = '';
+            document.getElementById("inputProvinsi").value = '';
+            document.getElementById("inputAgama").value = '';
+            document.getElementById("inputStatusPerkawinan").value = '';
+            document.getElementById("inputPekerjaan").value = '';
+            document.getElementById("inputKewarganegaraan").value = '';
+            document.getElementById("inputBerlakuHingga").value = '';
+      }
+
+</script>
 @endsection
