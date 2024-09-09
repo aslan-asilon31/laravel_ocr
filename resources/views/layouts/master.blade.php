@@ -34,6 +34,11 @@
   <link rel="stylesheet" href="{{asset('project-ocr/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('project-ocr/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('project-ocr/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
   <style>
   #pdf-preview, #image-preview {
       display: none;
@@ -261,7 +266,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <section class="content-header" id="content-header-first">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -280,7 +285,7 @@
     <section class="content">
       <div class="container-fluid">
 
-        <div class="card collapsed-card card-danger card-outline">
+        <div class="card collapsed-card card-danger card-outline" id="processing-option">
           <div class="card-header">
             <h6 class="card-title">Processing Options - OCR</h6>
   
@@ -493,6 +498,174 @@
 
 <!-- flag-icon-css -->
 <link rel="stylesheet" href="{{asset('project-ocr/plugins/flag-icon-css/css/flag-icon.min.css')}}">
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+  
+  $(function () {
+    $("#example3").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+
+  $(function () {
+    $("#example4").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example4_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+  $(function () {
+    $("#example5").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example5_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+  $(function () {
+    $("#example6").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example6_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+  $(function () {
+    $("#example7").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example7_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+<script>
+  // Dashboard Chart
+  Highcharts.chart('dashboard-chart', {
+      chart: { type: 'line' },
+      title: { text: 'Overall Performance' },
+      series: [{
+          name: 'Metric 1',
+          data: [1, 3, 2, 4]
+      }, {
+          name: 'Metric 2',
+          data: [5, 3, 4, 2]
+      }]
+  });
+
+  // KTP Chart
+  Highcharts.chart('ktp-chart', {
+      chart: { type: 'pie' },
+      title: { text: 'Demographics' },
+      series: [{
+          name: 'Population',
+          data: [
+              { name: 'Male', y: 60 },
+              { name: 'Female', y: 40 }
+          ]
+      }]
+  });
+
+  // Faktur Pajak Chart
+  Highcharts.chart('faktur-pajak-chart', {
+      chart: { type: 'column' },
+      title: { text: 'Tax Invoices' },
+      series: [{
+          name: 'Invoices',
+          data: [10, 15, 12, 8]
+      }]
+  });
+
+  // Ijazah Chart
+  Highcharts.chart('ijazah-chart', {
+      chart: { type: 'bar' },
+      title: { text: 'Certificates Issued' },
+      series: [{
+          name: 'Certificates',
+          data: [20, 30, 25, 40]
+      }]
+  });
+
+  // Exam Proctoring Chart
+  Highcharts.chart('exam-proctoring-chart', {
+      chart: { type: 'line' },
+      title: { text: 'Exam Pass Rates' },
+      series: [{
+          name: 'Pass Rate',
+          data: [75, 80, 70, 85]
+      }]
+  });
+
+  // Lembar PO Chart
+  Highcharts.chart('lembar-po-chart', {
+      chart: { type: 'column' },
+      title: { text: 'Purchase Orders' },
+      series: [{
+          name: 'Orders',
+          data: [15, 20, 18, 22]
+      }]
+  });
+</script>
 
 <script>
   $(function () {
