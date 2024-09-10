@@ -243,7 +243,7 @@
               </li>
               <!-- Lembar PO -->
               <li class="nav-item">
-                  <a href="{{ route('purchase-order.index') }}" class="nav-link text-white {{ request()->routeIs('purchase-order.index') ? 'active' : '' }}">
+                  <a href="{{ route('purchase-order.index') }}" class="nav-link text-white {{ request()->routeIs('purchase-order.index') || request()->routeIs('purchase-order.scan') ? 'active' : '' }}">
                       <i class="nav-icon fa fa-receipt"></i>
                       <p>Purchase Order Sheet</p>
                   </a>
