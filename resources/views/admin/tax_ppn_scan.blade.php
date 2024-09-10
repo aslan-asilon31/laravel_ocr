@@ -47,348 +47,613 @@
     }
   </style>
 
-  <div class="row">
-    <div class="col-12">
+<div class="row">
+          <div class="col-12">
 
-      <div class="row">
-        <div class="col-md-6">
-
-          <!-- Profile Image -->
-          <div class="card card-dark card-outline">
-            <div class="nav-item">
-              <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
-            </div>
-            <div class="card-body box-profile">
-              <div id="progress-container">
-                <div class="progress">
-                  <div class="progress-bar bg-success progress-bar-striped" role="progressbar"
-                        aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+            <div class="row">
+              <div class="col-md-6">
+    
+                <!-- Profile Image -->
+                <div class="card card-dark card-outline">
+                  <div class="nav-item">
+                    <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
                   </div>
-                </div>
-                <h5 class="bg-success text-center" id="progress-text">0% Complete (success)</h6>
-              </div>
-              <h5 class="bg-success text-center" id="scan-status" style="display: none;">Scan Success</h6>
-              <form id="upload-form" class="mt-10">
-                <div class="" style="display: flex;justify-content: space-between;">
-                  <input type="file" id="file-input" style="width: 200px;" accept="image/*" required>
-                  <button class="bg-dark " style="width: 100px;">Re Scan</button>
-                </div>
-              </form>
-              <iframe id="pdf-iframe" src="{{asset('project-ocr/myread/made-project/Faktur_pajak12.pdf')}}" width="100%" height="800"></iframe>
+                  <div class="card-body box-profile">
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" id="tax-is-compare" value="" checked>
+                      <label for="tax-is-compare" class="custom-control-label">
+                          <h6>Is Compare ?</h6>
+                      </label>
+                    </div>
+                    <div id="progress-container">
+                      <div class="progress">
+                        <div class="progress-bar bg-success progress-bar-striped" role="progressbar"
+                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                        </div>
+                      </div>
+                      <h5 class="bg-success text-center" id="progress-text">0% Complete (success)</h6>
+                    </div>
+                    <h5 class="bg-success text-center" id="scan-status" style="display: none;">Scan Success</h6>
+                      <iframe id="pdf-iframe" src="{{asset('Faktur_pajak12.pdf')}}" width="100%" height="600"></iframe>
+                      <form id="upload-form" class="mt-10">
+                        <div class="" style="display: flex;justify-content: space-between;">
+                          <input type="file" id="file-input" style="width: 200px" accept="image/*" required>
+                          <button class="bg-dark " style="width: 100px;">Re Scan</button>
+                        </div>
+                      </form>
 
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <div class="card card-danger card-outline" id="tax-is-compare-card">
+                  <div class="card-header p-2">
+                    <ul class="nav nav-pills">
+                    </ul>
+                  </div><!-- /.card-header -->
+                  <div class="card-body">
+                    <div class="tab-content">
+                      <div class="active tab-pane" id="activity">
+                        <form id="data-form" class="form-horizontal">
+                          <div class="form-group row">
+                              <label for="inputInvoiceNo" class="col-sm-4 col-form-label">Nomor Faktur</label>
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="NoFakturPajakCompare" name="NoFakturPajak" value=""
+                                placeholder="no faktur pajak...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputPONo" class="col-sm-4 col-form-label">Tanggal Faktur</label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="TanggalFakturPajakCompare" name="TanggalFakturPajak" value="" placeholder="tanggal faktur pajak...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputTerms" class="col-sm-4 col-form-label">NPWP Penjual</label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="NPWPpenjualCompare" name="NPWPpenjual" value="" placeholder="NPWP penjual...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputCustomerName" class="col-sm-4 col-form-label">Nama Penjual</label>
+
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="NamaPenjualCompare" name="NamaPenjual" value="" placeholder="nama penjual...">
+                            </div>
+                            <div class=" " style="display: flex;justify-content: space-between;">
+                                <div class="text-danger" hidden>
+                                  Please insert data
+                                </div>
+                                <div class="text-success" position="right">
+                                  Validation score : 100
+                                </div>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Alamat Penjual</label>
+                              <textarea class="form-control" id="AlamatPenjualCompare" name="AlamatPenjual" value="" placeholder="alamat penjual..."></textarea>
+                             
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputSalesPerson" class="col-sm-4 col-form-label">No NPWP Lawan Transaksi</label>
+                            
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="NoNPWPlawanTransaksiCompare" name="NoNPWPlawanTransaksi" value="" placeholder="no NPWP lawan transaksi...">
+                            </div>
+                            <div class=" " style="display: flex;justify-content: space-between;">
+                                <div class="text-danger" hidden>
+                                  Please insert data
+                                </div>
+                                <div class="text-success" position="right">
+                                  Validation score : 100
+                                </div>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputSalesPerson" class="col-sm-4 col-form-label">NPWP Lawan Transaksi</label>
+                            
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="NPWPlawanTransaksiCompare" name="NPWPlawanTransaksi" value="" placeholder="NPWP lawan transaksi...">
+                            </div>
+                            <div class=" " style="display: flex;justify-content: space-between;">
+                                <div class="text-danger" hidden>
+                                  Please insert data
+                                </div>
+                                <div class="text-success" position="right">
+                                  Validation score : 100
+                                </div>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Alamat Lawan Transaksi</label>
+                            <textarea class="form-control" id="AlamatLawanTransaksiCompare" name="AlamatLawanTransaksi" placeholder="alamat lawan transaksi..."></textarea>
+                             
+                            <div class=" " style="display: flex;justify-content: space-between;">
+                                <div class="text-danger" hidden>
+                                  Please insert data
+                                </div>
+                                <div class="text-success" position="right">
+                                  Validation score : 100
+                                </div>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputTotal" class="col-sm-4 col-form-label">Harga Total</label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="number" class="form-control" id="hargaTotalCompare" name="hargaTotal" value="" placeholder="harga total...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputTotal" class="col-sm-4 col-form-label">Diskon</label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="number" class="form-control" id="diskonCompare" name="diskon" value="00,0" placeholder="diskon...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputPPN" class="col-sm-4 col-form-label">DPP </label>
+                             
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="number" class="form-control" id="dppCompare" name="dpp" value="" placeholder="dpp...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputPPN" class="col-sm-4 col-form-label">PPN </label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="number" class="form-control" id="ppnCompare" name="ppn" value="" placeholder="ppn...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputPPN" class="col-sm-4 col-form-label">PPnBM </label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="number" class="form-control" id="PPnBMCompare" name="ppnbm" value="" placeholder="ppnbm...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Referensi</label>
+                            <textarea class="form-control" id="referensiCompare" name="referensi" value="" placeholder="referensi..."></textarea>
+                            <div class=" " style="display: flex;justify-content: space-between;">
+                                <div class="text-danger" hidden>
+                                  Please insert data
+                                </div>
+                                <div class="text-success" position="right">
+                                  Validation score : 100
+                                </div>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                              <div class="offset-sm-2 col-sm-10">
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                              </div>
+                          </div>
+                        </form>
+                      
+                        <!-- /.post -->
+                      </div>
+                    </div>
+                    <!-- /.tab-content -->
+                  </div><!-- /.card-body -->
+                </div>
+    
+              </div>
+              <!-- /.col -->
+              <div class="col-md-6">
+                <div class="card card-danger card-outline">
+                  <div class="card-header p-2">
+                    <ul class="nav nav-pills">
+                      <li class="nav-item"><a class="nav-link bg-dark active" href="#activity" data-toggle="tab">information detail</a></li>
+                    </ul>
+                  </div><!-- /.card-header -->
+                  <div class="card-body">
+                    <div class="tab-content">
+                      <div class="active tab-pane" id="activity">
+                        <form id="data-form" class="form-horizontal">
+                          <div class="form-group row">
+                              <label for="inputInvoiceNo" class="col-sm-4 col-form-label">Nomor Faktur</label>
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="NoFakturPajak" name="NoFakturPajak" value=""
+                                placeholder="no faktur pajak...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputPONo" class="col-sm-4 col-form-label">Tanggal Faktur</label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="TanggalFakturPajak" name="TanggalFakturPajak" value="" placeholder="tanggal faktur pajak...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputTerms" class="col-sm-4 col-form-label">NPWP Penjual</label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="NPWPpenjual" name="NPWPpenjual" value="" placeholder="NPWP penjual...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputCustomerName" class="col-sm-4 col-form-label">Nama Penjual</label>
+
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="NamaPenjual" name="NamaPenjual" value="" placeholder="nama penjual...">
+                            </div>
+                            <div class=" " style="display: flex;justify-content: space-between;">
+                                <div class="text-danger" hidden>
+                                  Please insert data
+                                </div>
+                                <div class="text-success" position="right">
+                                  Validation score : 100
+                                </div>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Alamat Penjual</label>
+                              <textarea class="form-control" id="AlamatPenjual" name="AlamatPenjual" value="" placeholder="alamat penjual..."></textarea>
+                             
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputSalesPerson" class="col-sm-4 col-form-label">No NPWP Lawan Transaksi</label>
+                            
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="NoNPWPlawanTransaksi" name="NoNPWPlawanTransaksi" value="" placeholder="no NPWP lawan transaksi...">
+                            </div>
+                            <div class=" " style="display: flex;justify-content: space-between;">
+                                <div class="text-danger" hidden>
+                                  Please insert data
+                                </div>
+                                <div class="text-success" position="right">
+                                  Validation score : 100
+                                </div>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputSalesPerson" class="col-sm-4 col-form-label">NPWP Lawan Transaksi</label>
+                            
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                              </div>
+                              <input type="text" class="form-control" id="NPWPlawanTransaksi" name="NPWPlawanTransaksi" value="" placeholder="NPWP lawan transaksi...">
+                            </div>
+                            <div class=" " style="display: flex;justify-content: space-between;">
+                                <div class="text-danger" hidden>
+                                  Please insert data
+                                </div>
+                                <div class="text-success" position="right">
+                                  Validation score : 100
+                                </div>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Alamat Lawan Transaksi</label>
+                            <textarea class="form-control" id="AlamatLawanTransaksi" name="AlamatLawanTransaksi" placeholder="alamat lawan transaksi..."></textarea>
+                             
+                            <div class=" " style="display: flex;justify-content: space-between;">
+                                <div class="text-danger" hidden>
+                                  Please insert data
+                                </div>
+                                <div class="text-success" position="right">
+                                  Validation score : 100
+                                </div>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputTotal" class="col-sm-4 col-form-label">Harga Total</label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="number" class="form-control" id="hargaTotal" name="hargaTotal" value="" placeholder="harga total...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputTotal" class="col-sm-4 col-form-label">Diskon</label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="number" class="form-control" id="diskon" name="diskon" value="" placeholder="diskon...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputPPN" class="col-sm-4 col-form-label">DPP </label>
+                             
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="number" class="form-control" id="dpp" name="dpp" value="" placeholder="dpp...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputPPN" class="col-sm-4 col-form-label">PPN </label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="number" class="form-control" id="ppn" name="ppn" value="" placeholder="ppn...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="inputPPN" class="col-sm-4 col-form-label">PPnBM </label>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                </div>
+                                <input type="number" class="form-control" id="PPnBM" name="ppnbm" value="" placeholder="ppnbm...">
+                              </div>
+                              <div class=" " style="display: flex;justify-content: space-between;">
+                                  <div class="text-danger" hidden>
+                                    Please insert data
+                                  </div>
+                                  <div class="text-success" position="right">
+                                    Validation score : 100
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Referensi</label>
+                            <textarea class="form-control" id="referensi" name="referensi" value="" placeholder="referensi..."></textarea>
+                            <div class=" " style="display: flex;justify-content: space-between;">
+                                <div class="text-danger" hidden>
+                                  Please insert data
+                                </div>
+                                <div class="text-success" position="right">
+                                  Validation score : 100
+                                </div>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                              <div class="offset-sm-2 col-sm-10">
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                              </div>
+                          </div>
+                        </form>
+                      
+                        <!-- /.post -->
+                      </div>
+                    </div>
+                    <!-- /.tab-content -->
+                  </div><!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
             </div>
-            <!-- /.card-body -->
+            <!-- /.row -->
+            
           </div>
-          <!-- /.card -->
-
+          <!-- /.col -->
         </div>
-        <!-- /.col -->
-        <div class="col-md-6">
-          <div class="card card-danger card-outline">
-            <div class="card-header p-2">
-              <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link bg-dark active" href="#activity" data-toggle="tab">information detail</a></li>
-              </ul>
-            </div><!-- /.card-header -->
-            <div class="card-body">
-              <div class="tab-content">
-                <div class="active tab-pane" id="activity">
-                  <form id="data-form" class="form-horizontal">
-                    <div class="form-group row">
-                        <label for="inputInvoiceNo" class="col-sm-4 col-form-label">Invoice No</label>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                          </div>
-                          <input type="text" class="form-control" id="NoFakturPajak" name="NoFakturPajak" value=""
-                          placeholder="no faktur pajak...">
-                        </div>
-                        <div class=" " style="display: flex;justify-content: space-between;">
-                            <div class="text-danger" hidden>
-                              Please insert data
-                            </div>
-                            <div class="text-success" position="right">
-                              Validation score : 100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPONo" class="col-sm-4 col-form-label">Tanggal Faktur</label>
-                        
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                          </div>
-                          <input type="text" class="form-control" id="TanggalFakturPajak" name="TanggalFakturPajak" value="" placeholder="tanggal faktur pajak...">
-                        </div>
-                        <div class=" " style="display: flex;justify-content: space-between;">
-                            <div class="text-danger" hidden>
-                              Please insert data
-                            </div>
-                            <div class="text-success" position="right">
-                              Validation score : 100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputTerms" class="col-sm-4 col-form-label">NPWP Penjual</label>
-                        
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                          </div>
-                          <input type="text" class="form-control" id="NPWPpenjual" name="NPWPpenjual" value="" placeholder="NPWP penjual...">
-                        </div>
-                        <div class=" " style="display: flex;justify-content: space-between;">
-                            <div class="text-danger" hidden>
-                              Please insert data
-                            </div>
-                            <div class="text-success" position="right">
-                              Validation score : 100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputCustomerName" class="col-sm-4 col-form-label">Nama Penjual</label>
-
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                        </div>
-                        <input type="text" class="form-control" id="NamaPenjual" name="NamaPenjual" value="" placeholder="nama penjual...">
-                      </div>
-                      <div class=" " style="display: flex;justify-content: space-between;">
-                          <div class="text-danger" hidden>
-                            Please insert data
-                          </div>
-                          <div class="text-success" position="right">
-                            Validation score : 100
-                          </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Alamat Penjual</label>
-                        <textarea class="form-control" id="AlamatPenjual" name="AlamatPenjual" value="" placeholder="alamat penjual..."></textarea>
-                        
-                        <div class=" " style="display: flex;justify-content: space-between;">
-                            <div class="text-danger" hidden>
-                              Please insert data
-                            </div>
-                            <div class="text-success" position="right">
-                              Validation score : 100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputSalesPerson" class="col-sm-4 col-form-label">No NPWP Lawan Transaksi</label>
-                      
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                        </div>
-                        <input type="text" class="form-control" id="NoNPWPlawanTransaksi" name="NoNPWPlawanTransaksi" value="" placeholder="no NPWP lawan transaksi...">
-                      </div>
-                      <div class=" " style="display: flex;justify-content: space-between;">
-                          <div class="text-danger" hidden>
-                            Please insert data
-                          </div>
-                          <div class="text-success" position="right">
-                            Validation score : 100
-                          </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Alamat Lawan Transaksi</label>
-                      <textarea class="form-control" id="AlamatLawanTransaksi" name="AlamatLawanTransaksi" placeholder="alamat lawan transaksi..."></textarea>
-                        
-                      <div class=" " style="display: flex;justify-content: space-between;">
-                          <div class="text-danger" hidden>
-                            Please insert data
-                          </div>
-                          <div class="text-success" position="right">
-                            Validation score : 100
-                          </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputTotal" class="col-sm-4 col-form-label">Harga Total</label>
-                        
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                          </div>
-                          <input type="number" class="form-control" id="hargaTotal" name="hargaTotal" value="" placeholder="harga total...">
-                        </div>
-                        <div class=" " style="display: flex;justify-content: space-between;">
-                            <div class="text-danger" hidden>
-                              Please insert data
-                            </div>
-                            <div class="text-success" position="right">
-                              Validation score : 100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputTotal" class="col-sm-4 col-form-label">Diskon</label>
-                        
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                          </div>
-                          <input type="number" class="form-control" id="diskon" name="diskon" value="" placeholder="diskon...">
-                        </div>
-                        <div class=" " style="display: flex;justify-content: space-between;">
-                            <div class="text-danger" hidden>
-                              Please insert data
-                            </div>
-                            <div class="text-success" position="right">
-                              Validation score : 100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPPN" class="col-sm-4 col-form-label">DPP </label>
-                        
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                          </div>
-                          <input type="number" class="form-control" id="dpp" name="dpp" value="" placeholder="dpp...">
-                        </div>
-                        <div class=" " style="display: flex;justify-content: space-between;">
-                            <div class="text-danger" hidden>
-                              Please insert data
-                            </div>
-                            <div class="text-success" position="right">
-                              Validation score : 100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPPN" class="col-sm-4 col-form-label">PPN </label>
-                        
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                          </div>
-                          <input type="number" class="form-control" id="ppn" name="ppn" value="" placeholder="ppn...">
-                        </div>
-                        <div class=" " style="display: flex;justify-content: space-between;">
-                            <div class="text-danger" hidden>
-                              Please insert data
-                            </div>
-                            <div class="text-success" position="right">
-                              Validation score : 100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPPN" class="col-sm-4 col-form-label">PPnBM </label>
-                        
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                          </div>
-                          <input type="number" class="form-control" id="ppnbm" name="ppnbm" value="" placeholder="ppnbm...">
-                        </div>
-                        <div class=" " style="display: flex;justify-content: space-between;">
-                            <div class="text-danger" hidden>
-                              Please insert data
-                            </div>
-                            <div class="text-success" position="right">
-                              Validation score : 100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Referensi</label>
-                      <textarea class="form-control" id="referensi" name="referensi" value="" placeholder="referensi..."></textarea>
-                      <div class=" " style="display: flex;justify-content: space-between;">
-                          <div class="text-danger" hidden>
-                            Please insert data
-                          </div>
-                          <div class="text-success" position="right">
-                            Validation score : 100
-                          </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputSalesPerson" class="col-sm-4 col-form-label">URL</label>
-                      
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                        </div>
-                        <input type="text" class="form-control" id="url" name="url" value="" placeholder="url...">
-                      </div>
-                      <div class=" " style="display: flex;justify-content: space-between;">
-                          <div class="text-danger" hidden>
-                            Please insert data
-                          </div>
-                          <div class="text-success" position="right">
-                            Validation score : 100
-                          </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Deskripsi Item</label>
-                      <textarea class="form-control" id="desckripsiItem" name="desckripsiItem" value="" placeholder="deskripsi item..."></textarea>
-                      <div class=" " style="display: flex;justify-content: space-between;">
-                          <div class="text-danger" hidden>
-                            Please insert data
-                          </div>
-                          <div class="text-success" position="right">
-                            Validation score : 100
-                          </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
-                  </form>
-                
-                  <!-- /.post -->
-                </div>
-              </div>
-              <!-- /.tab-content -->
-            </div><!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-      
-    </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
-
-
+        <!-- /.row -->
 
   
+<script>
+  document.getElementById('file-input').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+              document.getElementById('image-preview').src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+      }
+  });
+</script>
+
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
       // Simulasi data JSON
       const data = {
-          "NoFakturPajak": "030.013-23.12261715",
-          "TanggalFakturPajak": "27 Desember 2023",
-          "NPWPpenjual": "81.152.936.1-423.000",
-          "NamaPenjual": "PT TRIMSATI BAKSYA SOLUSI",
-          "AlamatPenjual": "JL. PHH MUSTOPA GG. SETIA III NO 6 RT 005 RW 014, PADASUKA, KOTA BANDUNG",
-          "NoNPWPlawanTransaksi": "01.000.013.1-093.000",
-          "NamaLawanTransaksi": "PT. TELKOM INDONESIA (PERSERO), TBK",
-          "AlamatLawanTransaksi": "JL. JAPATI NO.1 Kel. SADANGSERANG Kec. COBLONG KOTA BANDUNG JAWA BARAT 40133",
-          "hargaTotal": "78.600.000,00",
-          "diskon": "0,00",
-          "dpp": "78.600.000,00",
-          "ppn": "8.646.000,00",
-          "ppnbm": "0,00",
-          "referensi": "",
-          "url": "",
-          "desckripsiItem": "" // Assuming 'Deskripsi item' should be the field name
+        "NoFakturPajak": "030.007-23.23344282",
+        "TanggalFakturPajak": "07 Juli 2023",
+        "NPWPpenjual": "70.535.497.5-424.000",
+        "NamaPenjual": "PT RAD UTAMA RISET",
+        "AlamatPenjual": "RUKO PASAR MODERN BATUNUNGGAL BLOK RA NO 26 RT 000 RW 000, MENGGER , KOTA BANDUNG",
+        "NoNPWPlawanTransaksi": "01.000.013.1-093.000",
+        "NPWPlawanTransaksi": "PT. TELKOM INDONESIA (PERSERO) TBK",
+        "AlamatLawanTransaksi": "JL. JAPATI NO. 1 RT.000 RW.000 SADANG SERANG COBLONG KOTA BANDUNG JAWA BARAT",
+        "hargaTotal": "1.600.000.000,00",
+        "diskon": "0,00",
+        "dpp": "1.600.000.000,00",
+        "ppn": "176.000.000,00",
+        "PPnBM": "0,00",
+        "referensi": "Pembayaran Pengadaan Jasa Survey Net Promoter Score (NPS) Top Down CFU Consumer/Indihome dan DFU Digital Business Tahun 2023 Tahap I"
       };
 
       startLoadingProgress();
@@ -411,22 +676,40 @@
                   document.getElementById("data-form").style.display = "block";
 
                   // Fill the form with JSON data
+
+                  // Fungsi untuk mengubah format mata uang menjadi angka
+                  function formatCurrencyToNumber(value) {
+                      return parseFloat(value.replace(/\./g, '').replace(',', '.'));
+                  }
+
                   document.getElementById("NoFakturPajak").value = data.NoFakturPajak || '';
                   document.getElementById("TanggalFakturPajak").value = data.TanggalFakturPajak || '';
                   document.getElementById("NPWPpenjual").value = data.NPWPpenjual || '';
                   document.getElementById("NamaPenjual").value = data.NamaPenjual || '';
                   document.getElementById("AlamatPenjual").value = data.AlamatPenjual || '';
                   document.getElementById("NoNPWPlawanTransaksi").value = data.NoNPWPlawanTransaksi || '';
-                  document.getElementById("NamaLawanTransaksi").value = data.NamaLawanTransaksi || ''; // Ensure this ID exists
+                  document.getElementById("NPWPlawanTransaksi").value = data.NPWPlawanTransaksi || ''; // Ensure this ID exists
                   document.getElementById("AlamatLawanTransaksi").value = data.AlamatLawanTransaksi  || '' ;
-                  document.getElementById("hargaTotal").value = data.hargaTotal || '';
-                  document.getElementById("diskon").value = data.diskon || '';
-                  document.getElementById("dpp").value = data.dpp || '';
-                  document.getElementById("ppn").value = data.ppn || '';
-                  document.getElementById("ppnbm").value = data.ppnbm || '';
+                  document.getElementById("hargaTotal").value = formatCurrencyToNumber(data.hargaTotal) || '';
+                  document.getElementById("diskon").value = formatCurrencyToNumber(data.diskon) || '';
+                  document.getElementById("dpp").value = formatCurrencyToNumber(data.dpp) || '';
+                  document.getElementById("ppn").value = formatCurrencyToNumber(data.ppn) || '';
+                  document.getElementById("PPnBM").value = formatCurrencyToNumber(data.PPnBM) || '';
                   document.getElementById("referensi").value = data.referensi || '';
-                  document.getElementById("url").value = data.url || '';
-                  document.getElementById("desckripsiItem").value = data.desckripsiItem || '';
+                  document.getElementById("NoFakturPajakCompare").value = data.NoFakturPajak || '';
+                  document.getElementById("TanggalFakturPajakCompare").value = data.TanggalFakturPajak || '';
+                  document.getElementById("NPWPpenjualCompare").value = data.NPWPpenjual || '';
+                  document.getElementById("NamaPenjualCompare").value = data.NamaPenjual || '';
+                  document.getElementById("AlamatPenjualCompare").value = data.AlamatPenjual || '';
+                  document.getElementById("NoNPWPlawanTransaksiCompare").value = data.NoNPWPlawanTransaksi || '';
+                  document.getElementById("NPWPlawanTransaksiCompare").value = data.NPWPlawanTransaksi || ''; // Ensure this ID exists
+                  document.getElementById("AlamatLawanTransaksiCompare").value = data.AlamatLawanTransaksi  || '' ;
+                  document.getElementById("hargaTotalCompare").value = formatCurrencyToNumber(data.hargaTotal) || '';
+                  document.getElementById("diskonCompare").value = formatCurrencyToNumber(data.diskon) || '';
+                  document.getElementById("dppCompare").value = formatCurrencyToNumber(data.dpp) || '';
+                  document.getElementById("ppnCompare").value = formatCurrencyToNumber(data.ppn) || '';
+                  document.getElementById("PPnBMCompare").value = formatCurrencyToNumber(data.PPnBM) || '';
+                  document.getElementById("referensiCompare").value = data.referensi || '';
               }, 500);
           }
       }
@@ -483,72 +766,6 @@
 </script>
 
 
-  <script>
-  document.getElementById('file-input').addEventListener('change', function(event) {
-      const file = event.target.files[0];
-      if (file) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-              document.getElementById('image-preview').src = e.target.result;
-          };
-          reader.readAsDataURL(file);
-      }
-  });
-</script>
-
-
-  
-<script>
-    function previewPDF() {
-        const fileInput = document.getElementById('file-input-pdf');
-        const file = fileInput.files[0];
-
-        if (file && file.type === 'application/pdf') {
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                const typedArray = new Uint8Array(e.target.result);
-
-                pdfjsLib.getDocument(typedArray).promise.then(function(pdf) {
-                    // Ensure there are at least two pages
-                    if (pdf.numPages >= 2) {
-                        // Render the first page
-                        renderPage(pdf, 1, 'pdf-preview1');
-                        // Render the second page
-                        renderPage(pdf, 2, 'pdf-preview2');
-                    } else {
-                        alert('PDF harus memiliki setidaknya 2 halaman.');
-                    }
-                });
-            };
-
-            reader.readAsArrayBuffer(file);
-        } else {
-            alert('Silakan unggah file PDF.');
-        }
-    }
-
-    function renderPage(pdf, pageNumber, canvasId) {
-        pdf.getPage(pageNumber).then(function(page) {
-            const canvas = document.getElementById(canvasId);
-            const context = canvas.getContext('2d');
-            const viewport = page.getViewport({ scale: 1.5 });
-
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-
-            const renderContext = {
-                canvasContext: context,
-                viewport: viewport
-            };
-
-            page.render(renderContext);
-        });
-    }
-</script>
-
-
-
 <script>
   function showPDF() {
       const fileInput = document.getElementById('file-input-pdf');
@@ -563,31 +780,28 @@
   }
 </script>
 
-
-
-  
 <script>
-  
-  function clearForm() {
-            document.getElementById("inputName").value = '';
-            document.getElementById("inputNIK").value = '';
-            document.getElementById("inputTempatLahir").value = '';
-            document.getElementById("inputTanggalLahir").value = '';
-            document.getElementById("inputGolonganDarah").value = '';
-            document.getElementById("inputAlamat").value = '';
-            document.getElementById("inputRTRW").value = '';
-            document.getElementById("inputKelurahan").value = '';
-            document.getElementById("inputKecamatan").value = '';
-            document.getElementById("inputKabupaten").value = '';
-            document.getElementById("inputProvinsi").value = '';
-            document.getElementById("inputAgama").value = '';
-            document.getElementById("inputStatusPerkawinan").value = '';
-            document.getElementById("inputPekerjaan").value = '';
-            document.getElementById("inputKewarganegaraan").value = '';
-            document.getElementById("inputBerlakuHingga").value = '';
-      }
+  document.addEventListener('DOMContentLoaded', function() {
+      const checkbox = document.getElementById('tax-is-compare');
+      const card = document.getElementById('tax-is-compare-card');
 
+      // Check if there's a saved checkbox state in localStorage
+      const savedState = localStorage.getItem('tax-is-compare');
+
+      // Determine if checkbox should be checked based on localStorage or default HTML checked state
+      const isChecked = savedState !== null ? savedState === 'true' : checkbox.checked;
+      
+      // Set the checkbox state and card visibility based on the saved or default state
+      checkbox.checked = isChecked;
+      card.style.display = isChecked ? 'block' : 'none';
+
+      // Update localStorage and card display on checkbox change
+      checkbox.addEventListener('change', function() {
+          const isChecked = checkbox.checked;
+          localStorage.setItem('tax-is-compare', isChecked);
+          card.style.display = isChecked ? 'block' : 'none';
+      });
+  });
 </script>
-
 
 @endsection

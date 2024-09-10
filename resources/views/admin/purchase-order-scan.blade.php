@@ -31,14 +31,15 @@
                             <h5 class="bg-success text-center" id="progress-text">0% Complete (success)</h6>
                           </div>
                           <h5 class="bg-success text-center" id="scan-status" style="display: none;">Scan Success</h6>
+                            <iframe id="pdf-iframe" src="{{asset('invoice1.jpg')}}" width="100%"
+                            height="600"></iframe>
+                            
                             <form id="upload-form" class="mt-10">
                               <div class="" style="display: flex;justify-content: space-between;">
                                 <input type="file" id="file-input" style="width: 200px" accept="image/*" required>
                                 <button class="bg-dark " style="width: 100px;">Re Scan</button>
                               </div>
                             </form>
-                            <iframe id="pdf-iframe" src="{{asset('invoice1.jpg')}}" width="100%"
-                              height="600"></iframe>
 
                         </div>
                         <!-- /.card-body -->

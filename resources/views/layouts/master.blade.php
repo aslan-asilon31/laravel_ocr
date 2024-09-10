@@ -203,14 +203,14 @@
               </li>
               <!-- Tax Invoice -->
               <li class="nav-item">
-                  <a href="{{ route('tax-invoice.index') }}" class="nav-link text-white {{ request()->routeIs('tax-invoice.index') ? 'active' : '' }}">
+                  <a href="{{ route('tax-invoice.index') }}" class="nav-link text-white {{ request()->routeIs('tax-invoice.index') || request()->routeIs('tax-invoice.scan') ? 'active' : '' }}">
                       <i class="nav-icon fa fa-file-invoice"></i>
                       <p>Tax PPN</p>
                   </a>
               </li>
               <!-- Certificate -->
               <li class="nav-item">
-                  <a href="#" class="nav-link text-white {{ request()->routeIs('certificate.*') ? 'active' : '' }}">
+                  <a href="#" class="nav-link text-white {{ request()->routeIs('certificate.*') || request()->routeIs('ijasah.scan') || request()->routeIs('transkrip-nilai.scan') ? 'active' : '' }}">
                       <i class="nav-icon fa fa-certificate"></i>
                       <p>
                           Certificate
@@ -220,14 +220,14 @@
                   <ul class="nav nav-treeview ml-3">
                       <!-- Ijasah -->
                       <li class="nav-item">
-                          <a href="{{ route('ijasah.index') }}" class="nav-link text-white {{ request()->routeIs('ijasah.index') ? 'active' : '' }}">
+                          <a href="{{ route('ijasah.index') }}" class="nav-link text-white {{ request()->routeIs('ijasah.index') || request()->routeIs('ijasah.scan') ? 'active' : '' }}">
                               <i class="fa fa-graduation-cap nav-icon"></i>
                               <p>Ijasah</p>
                           </a>
                       </li>
                       <!-- Transkrip Nilai -->
                       <li class="nav-item">
-                          <a href="{{ route('transkrip-nilai.index') }}" class="nav-link text-white {{ request()->routeIs('transkrip-nilai.index') ? 'active' : '' }}">
+                          <a href="{{route('transkrip-nilai.index') }}" class="nav-link text-white {{ request()->routeIs('transkrip-nilai.index') || request()->routeIs('transkrip-nilai.scan') ? 'active' : '' }}">
                               <i class="fa fa-book nav-icon"></i>
                               <p>Transkrip Nilai</p>
                           </a>
