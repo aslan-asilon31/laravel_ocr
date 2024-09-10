@@ -137,6 +137,7 @@
               <table id="example3" class="table table-bordered table-striped">
                   <thead>
                     <tr>
+                        <th>File</th>
                         <th>Nama</th>
                         <th>NIK</th>
                         <th>Tempat Lahir</th>
@@ -154,13 +155,18 @@
                         <th>Kewarganegaraan</th>
                         <th>Berlaku Hingga</th>
                         <th>Tanggal Scan</th>
-
                     </tr>
                   </thead>
                   <tbody>
                   
                   @forelse($ktps as $ktp) 
                   <tr>
+                  <td>
+                            <!-- Link to download the PDF file -->
+                            <a href="{{ Storage::url('ktp/' . $ktp->image) }}" target="_blank">
+                                Download / lihat file
+                            </a>
+                        </td>
                         <td>{{ $ktp->nama }}</td>
                         <td>{{ $ktp->nik }}</td>
                         <td>{{ $ktp->tempat_lahir }}</td>
@@ -198,12 +204,15 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
+                    <td>-</td>
                   </tr>
                   @endforelse()
 
                   </tbody>
                   <tfoot>
                   <tr>
+                        <th>File</th>
+
                         <th>Nama</th>
                         <th>NIK</th>
                         <th>Tempat Lahir</th>
@@ -241,6 +250,8 @@
                 <table id="example4" class="table table-bordered table-striped">
                   <thead>
                     <tr>
+                        <th>File</th>
+
                         <th>Nama</th>
                         <th>NIM</th>
                         <th>Nama Universitas</th>
@@ -256,6 +267,12 @@
                   <tbody>
                   @forelse($certificates as $certificate)
                   <tr>
+                  <td>
+                            <!-- Link to download the PDF file -->
+                            <a href="{{ Storage::url('certificate/' . $certificate->image) }}" target="_blank">
+                                Download / lihat file
+                            </a>
+                        </td>
                         <td>{{ $certificate->nama }}</td>
                         <td>{{ $certificate->nim }}</td>
                         <td>{{ $certificate->nama_universitas }}</td>
@@ -279,11 +296,14 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
+                    <td>-</td>
                   </tr>
                   @endforelse
                   </tbody>
                   <tfoot>
                     <tr>
+                    <th>File</th>
+
                         <th>Nama</th>
                         <th>NIM</th>
                         <th>Nama Universitas</th>
@@ -314,6 +334,8 @@
                 <table id="example5" class="table table-bordered table-striped">
                   <thead>
                     <tr>
+                    <th>File</th>
+
                         <th>Nama Universitas</th>
                         <th>NIM</th>
                         <th>Nama</th>
@@ -327,6 +349,12 @@
                   <tbody>
                   @forelse($academics as $academic)
                     <tr>
+                    <td>
+                            <!-- Link to download the PDF file -->
+                            <a href="{{ Storage::url('academic-transcript/' . $academic->image) }}" target="_blank">
+                                Download / lihat file
+                            </a>
+                        </td>
                         <td>{{ $academic->universitas }}</td>
                         <td>{{ $academic->nim }}</td>
                         <td>{{ $academic->nama }}</td>
@@ -346,11 +374,14 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
+                    <td>-</td>
                   </tr>
                   @endforelse
                   </tbody>
                   <tfoot>
                     <tr>
+                    <th>File</th>
+
                         <th>Nama Universitas</th>
                         <th>NIM</th>
                         <th>Nama</th>
@@ -378,6 +409,8 @@
                 <table id="example6" class="table table-bordered table-striped">
                   <thead>
                     <tr>
+                    <th>File</th>
+
                         <th>Nomor Faktur</th>
                         <th>Tanggal Faktur</th>
                         <th>NPWP Penjual</th>
@@ -399,6 +432,12 @@
                   <tbody>
                   @forelse($taxes as $tax)
                   <tr>
+                  <td>
+                            <!-- Link to download the PDF file -->
+                            <a href="{{ Storage::url('tax/' . $tax->image) }}" target="_blank">
+                                Download / lihat file
+                            </a>
+                        </td>
                         <td>{{ $tax->no_faktur_pajak }}</td>
                         <td>{{ \Carbon\Carbon::parse($tax->tanggal_faktur_pajak)->isoFormat('dddd, D MMMM YYYY') }}</td>
                         <td>{{ $tax->npwp_penjual }}</td>
@@ -434,11 +473,14 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
+                    <td>-</td>
                   </tr>
                   @endforelse
                   </tbody>
                   <tfoot>
                     <tr>
+                    <th>File</th>
+
                         <th>Nomor Faktur</th>
                         <th>Tanggal Faktur</th>
                         <th>NPWP Penjual</th>
@@ -474,6 +516,8 @@
                 <table id="example7" class="table table-bordered table-striped">
                   <thead>
                     <tr>
+                    <th>File</th>
+
                             <th>Nama Vendor</th>
                             <th>No Invoice</th>
                             <th>Tanggal Invoice</th>
@@ -496,6 +540,12 @@
                   <tbody>
                   @forelse($purchases as $purchase)
                   <tr>
+                        <td>
+                            <!-- Link to download the PDF file -->
+                            <a href="{{ Storage::url('po/' . $purchase->image) }}" target="_blank">
+                                Download / lihat file
+                            </a>
+                        </td>
                         <td>{{ $purchase->nama_vendor }}</td>
                         <td>{{ $purchase->no_invoice }}</td>
                         <td>{{ \Carbon\Carbon::parse($purchase->tanggal_invoice)->isoFormat('dddd, D MMMM YYYY') }}</td>
@@ -531,11 +581,14 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
+                    <td>-</td>
                   </tr>
                   @endforelse
                   </tbody>
                   <tfoot>
                     <tr>
+                    <th>File</th>
+
                         <th>Nama Vendor</th>
                         <th>No Invoice</th>
                         <th>Tanggal Invoice</th>
