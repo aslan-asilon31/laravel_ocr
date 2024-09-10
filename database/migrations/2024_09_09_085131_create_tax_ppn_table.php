@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tax_ppn', function (Blueprint $table) {
             $table->id();
+            $table->string('image')->nullable();
             $table->string('no_faktur_pajak')->nullable();
             $table->date('tanggal_faktur_pajak')->nullable();
             $table->string('npwp_penjual')->nullable();

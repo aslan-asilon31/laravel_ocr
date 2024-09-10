@@ -47,6 +47,6 @@ class AcademicTranscriptsTableSeeder extends Seeder
             ['image' => 'academic-transcript.jpg', 'university' => 'Universitas DD', 'student_number' => '654321789', 'name' => 'Daisy Ridley', 'program' => 'Teknik Geologi', 'degree' => 'S.T.', 'gpa' => 3.65, 'faculty' => 'Fakultas Teknik Geologi', 'created_at' => '2024-09-09 09:19:36', 'updated_at' => '2024-09-09 09:19:36'],
             ['image' => 'academic-transcript.jpg', 'university' => 'Universitas EE', 'student_number' => '123456987', 'name' => 'Edward Norton', 'program' => 'Ilmu Komputer', 'degree' => 'S.Kom.', 'gpa' => 3.75, 'faculty' => 'Fakultas Ilmu Komputer', 'created_at' => '2024-09-09 09:19:36', 'updated_at' => '2024-09-09 09:19:36'],
             ['image' => 'academic-transcript.jpg', 'university' => 'Universitas FF', 'student_number' => '987321450', 'name' => 'Felicity Jones', 'program' => 'Arsitektur', 'degree' => 'S.Ar.', 'gpa' => 3.80, 'faculty' => 'Fakultas Arsitektur', 'created_at' => '2024-09-09 09:19:36', 'updated_at' => '2024-09-09 09:19:36']
-         ]);
-    });
- }
+        ]);
+    }
+}

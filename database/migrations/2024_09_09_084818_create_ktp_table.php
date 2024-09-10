@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('ktp', function (Blueprint $table) {
             $table->id();
+            $table->string('image');
             $table->string('nama');
             $table->string('nik')->unique()->nullable();
             $table->string('tempat_lahir')->nullable();
