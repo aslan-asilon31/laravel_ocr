@@ -9,6 +9,8 @@
               <div class="col-12">
                 <div class="row">
                   <div class="col-md-6">
+                  <form method="POST" action="{{ route('ijasah.scan') }}" id="upload-form"  enctype="multipart/form-data">
+                    @csrf
                     <!-- Profile Image -->
                     <div class="card card-danger card-outline">
                       <div class="nav-item">
@@ -28,12 +30,11 @@
                         <img id="image-preview" alt="Image Preview">
 
                         <!-- Form Upload -->
-                        <form action="{{ route('ijasah.scan') }}" id="upload-form" class="mt-10">
+                        <!-- <form action="{{ route('ijasah.scan') }}" id="upload-form" class="mt-10"> -->
                           <div style="display: flex; justify-content: space-between;">
                               <input type="file" id="file-input" style="width: 200px;" accept=".pdf, image/*" required onchange="handleFile()">
                               <button type="submit" class="btn bg-dark" style="width: 100px;">Scan</button>
                           </div>
-                        </form>
 
                       </div>
                       <!-- /.card-body -->
@@ -137,7 +138,6 @@
                                     <button class="btn btn-danger" onclick="clearForm()">Clear Form</button>
                                   </div>
                                 </div>
-                            </form>
                             <!-- /.post -->
                           </div>
                         </div>
@@ -146,6 +146,8 @@
                       <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
+                  </form>
+                    
                   </div>
                   <!-- /.col -->
                   <div class="col-md-6">

@@ -15,6 +15,23 @@ class TaxPpn extends Authenticatable
 
     protected $table = 'tax_ppn';
 
+    protected $fillable = [
+        'image',
+        'no_faktur_pajak',
+        'tanggal_faktur_pajak',
+        'npwp_penjual',
+        'nama_penjual',
+        'alamat_penjual',
+        'no_npwp_lawan_transaksi',
+        'alamat_lawan_transaksi',
+        'harga_total',
+        'diskon',
+        'dpp',
+        'ppn',
+        'ppnbm',
+        'referensi',
+    ];
+    
     /**
      * The attributes that should be hidden for serialization.
      *

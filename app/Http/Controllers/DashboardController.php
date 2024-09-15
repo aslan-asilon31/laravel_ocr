@@ -12,11 +12,11 @@ use App\Models\TaxPpn;
 class DashboardController extends Controller
 {
     public function index(){
-        $academics = AcademicTranscript::all();
-        $certificates = Certificate::all();
-        $ktps = Ktp::all();
-        $purchases = PurchaseOrder::all();
-        $taxes = TaxPpn::all();
+        $academics = AcademicTranscript::orderBy('created_at', 'DESC')->get();
+        $certificates = Certificate::orderBy('created_at', 'DESC')->get();
+        $ktps = Ktp::orderBy('created_at', 'DESC')->get();
+        $purchases = PurchaseOrder::orderBy('created_at', 'DESC')->get();
+        $taxes = TaxPpn::orderBy('created_at', 'DESC')->get();
         return view('admin.dashboard', compact('academics','certificates','ktps','purchases','taxes'));
         
     }

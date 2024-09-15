@@ -163,7 +163,7 @@
                   <tr>
                   <td>
                             <!-- Link to download the PDF file -->
-                            <a href="{{ Storage::url('ktp/' . $ktp->image) }}" target="_blank">
+                            <a href="{{ asset('scan/ktp/' . $ktp->image) }}" target="_blank">
                                 Download / lihat file
                             </a>
                         </td>
@@ -182,7 +182,7 @@
                         <td>{{ $ktp->status_perkawinan }}</td>
                         <td>{{ $ktp->pekerjaan }}</td>
                         <td>{{ $ktp->kewarganegaraan }}</td>
-                        <td>{{ \Carbon\Carbon::parse($ktp->berlaku_hingga)->isoFormat('dddd, D MMMM YYYY') }} </td>
+                        <td>{{ $ktp->berlaku_hingga }} </td>
                         <td>{{ \Carbon\Carbon::parse($ktp->created_at)->isoFormat('dddd, D MMMM YYYY') }}</td>
 
                   </tr>
@@ -269,7 +269,7 @@
                   <tr>
                   <td>
                             <!-- Link to download the PDF file -->
-                            <a href="{{ Storage::url('certificate/' . $certificate->image) }}" target="_blank">
+                            <a href="{{ asset('scan/certificate/' . $certificate->image) }}" target="_blank">
                                 Download / lihat file
                             </a>
                         </td>
@@ -351,7 +351,7 @@
                     <tr>
                     <td>
                             <!-- Link to download the PDF file -->
-                            <a href="{{ Storage::url('academic-transcript/' . $academic->image) }}" target="_blank">
+                            <a href="{{ asset('scan/academic-transcript/' . $academic->image) }}" target="_blank">
                                 Download / lihat file
                             </a>
                         </td>
@@ -434,7 +434,7 @@
                   <tr>
                   <td>
                             <!-- Link to download the PDF file -->
-                            <a href="{{ Storage::url('tax/' . $tax->image) }}" target="_blank">
+                            <a href="{{ asset('scan/tax/' . $tax->image) }}" target="_blank">
                                 Download / lihat file
                             </a>
                         </td>
@@ -542,7 +542,7 @@
                   <tr>
                         <td>
                             <!-- Link to download the PDF file -->
-                            <a href="{{ Storage::url('po/' . $purchase->image) }}" target="_blank">
+                            <a href="{{ asset('scan/po/' . $purchase->image) }}" target="_blank">
                                 Download / lihat file
                             </a>
                         </td>

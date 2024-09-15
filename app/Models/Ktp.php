@@ -15,6 +15,27 @@ class Ktp extends Authenticatable
 
     protected $table = 'ktp';
 
+    protected $fillable = [
+        'image',
+        'nama',
+        'nik',
+        'alamat',
+        'tanggal_lahir',
+        'tempat_lahir',
+        'golongan_darah',
+        'rt_rw',
+        'kecamatan',
+        'kelurahan',
+        'kabupaten',
+        'provinsi',
+        'agama',
+        'status_perkawinan',
+        'pekerjaan',
+        'kewarganegaraan',
+        'berlaku_hingga',
+    ];
+
+    
     /**
      * The attributes that should be hidden for serialization.
      *

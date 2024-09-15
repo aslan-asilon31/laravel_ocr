@@ -3,9 +3,6 @@
 @section('title','Tax Invoice Scan')
 @section('content')
 
-
-
-
 <style>
     .sidebar-color{
       color:white !important;
@@ -50,6 +47,8 @@
 <div class="row">
           <div class="col-12">
 
+          <form action="{{ route('tax-invoice.store') }}" id="upload-form" class="mt-10" method="POST" enctype="multipart/form-data">
+          @csrf
             <div class="row">
               <div class="col-md-6">
     
@@ -74,35 +73,38 @@
                       <h5 class="bg-success text-center" id="progress-text">0% Complete (success)</h6>
                     </div>
                     <h5 class="bg-success text-center" id="scan-status" style="display: none;">Scan Success</h6>
-                      <iframe id="pdf-iframe" src="{{asset('Faktur_pajak12.pdf')}}" width="100%" height="600"></iframe>
-                      <form id="upload-form" class="mt-10">
+                      <iframe id="pdf-iframe" src="{{ asset($taxes->image) }}" width="100%" height="600"></iframe>
                         <div class="" style="display: flex;justify-content: space-between;">
-                          <input type="file" id="file-input" style="width: 200px" accept="image/*" required>
-                          <button class="bg-dark " style="width: 100px;">Re Scan</button>
+                          <input type="file" id="file-input" style="width: 200px" accept="image/*" value="{{ asset($taxes->image) }}"  required>
+                          <button class="bg-dark " style="width: 100px;" id="rescan-btn">Re Scan</button>
                         </div>
-                      </form>
 
                   </div>
                   <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
 
-                <div class="card card-danger card-outline" id="tax-is-compare-card">
+                
+    
+              </div>
+              <!-- /.col -->
+              <div class="col-md-6">
+                <div class="card card-danger card-outline">
                   <div class="card-header p-2">
                     <ul class="nav nav-pills">
+                      <li class="nav-item"><a class="nav-link bg-dark active" href="#activity" data-toggle="tab">information detail</a></li>
                     </ul>
                   </div><!-- /.card-header -->
                   <div class="card-body">
                     <div class="tab-content">
                       <div class="active tab-pane" id="activity">
-                        <form id="data-form" class="form-horizontal">
                           <div class="form-group row">
                               <label for="inputInvoiceNo" class="col-sm-4 col-form-label">Nomor Faktur</label>
                               <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="NoFakturPajakCompare" name="NoFakturPajak" value=""
+                                <input type="text" class="form-control" id="" name="NoFakturPajak" value="{{ $taxes->no_faktur_pajak  }}"
                                 placeholder="no faktur pajak...">
                               </div>
                               <div class=" " style="display: flex;justify-content: space-between;">
@@ -121,7 +123,7 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="TanggalFakturPajakCompare" name="TanggalFakturPajak" value="" placeholder="tanggal faktur pajak...">
+                                <input type="date" class="form-control" id="" name="TanggalFakturPajak" value="{{ $taxes->tanggal_faktur_pajak  }}" placeholder="tanggal faktur pajak...">
                               </div>
                               <div class=" " style="display: flex;justify-content: space-between;">
                                   <div class="text-danger" hidden>
@@ -139,7 +141,7 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="NPWPpenjualCompare" name="NPWPpenjual" value="" placeholder="NPWP penjual...">
+                                <input type="text" class="form-control" id="" name="NPWPpenjual" value="{{ $taxes->npwp_penjual  }}" placeholder="NPWP penjual...">
                               </div>
                               <div class=" " style="display: flex;justify-content: space-between;">
                                   <div class="text-danger" hidden>
@@ -151,13 +153,13 @@
                               </div>
                           </div>
                           <div class="form-group row">
-                              <label for="inputCustomerName" class="col-sm-4 col-form-label">Nama Penjual</label>
+                            <label for="inputCustomerName" class="col-sm-4 col-form-label">Nama Penjual</label>
 
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                               </div>
-                              <input type="text" class="form-control" id="NamaPenjualCompare" name="NamaPenjual" value="" placeholder="nama penjual...">
+                              <input type="text" class="form-control" id="NamaPenjualCompare" name="NamaPenjual" value="{{ $taxes->nama_penjual }}" placeholder="nama penjual...">
                             </div>
                             <div class=" " style="display: flex;justify-content: space-between;">
                                 <div class="text-danger" hidden>
@@ -170,7 +172,7 @@
                           </div>
                           <div class="form-group row">
                               <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Alamat Penjual</label>
-                              <textarea class="form-control" id="AlamatPenjualCompare" name="AlamatPenjual" value="" placeholder="alamat penjual..."></textarea>
+                              <textarea class="form-control" id="AlamatPenjualCompare" name="AlamatPenjual"  placeholder="alamat penjual...">{{ $taxes->alamat_penjual }}</textarea>
                              
                               <div class=" " style="display: flex;justify-content: space-between;">
                                   <div class="text-danger" hidden>
@@ -188,7 +190,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                               </div>
-                              <input type="text" class="form-control" id="NoNPWPlawanTransaksiCompare" name="NoNPWPlawanTransaksi" value="" placeholder="no NPWP lawan transaksi...">
+                              <input type="text" class="form-control" id="NoNPWPlawanTransaksiCompare" name="NoNPWPlawanTransaksi" value="{{ $taxes->no_npwp_lawan_transaksi }}" placeholder="no NPWP lawan transaksi...">
                             </div>
                             <div class=" " style="display: flex;justify-content: space-between;">
                                 <div class="text-danger" hidden>
@@ -206,7 +208,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                               </div>
-                              <input type="text" class="form-control" id="NPWPlawanTransaksiCompare" name="NPWPlawanTransaksi" value="" placeholder="NPWP lawan transaksi...">
+                              <input type="text" class="form-control" id="NPWPlawanTransaksiCompare" name="NPWPlawanTransaksi" value="{{ $taxes->no_npwp_lawan_transaksi }}" placeholder="NPWP lawan transaksi...">
                             </div>
                             <div class=" " style="display: flex;justify-content: space-between;">
                                 <div class="text-danger" hidden>
@@ -219,7 +221,7 @@
                           </div>
                           <div class="form-group row">
                             <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Alamat Lawan Transaksi</label>
-                            <textarea class="form-control" id="AlamatLawanTransaksiCompare" name="AlamatLawanTransaksi" placeholder="alamat lawan transaksi..."></textarea>
+                            <textarea class="form-control" id="AlamatLawanTransaksiCompare" name="AlamatLawanTransaksi" placeholder="alamat lawan transaksi...">{{ $taxes->alamat_lawan_transaksi }}</textarea>
                              
                             <div class=" " style="display: flex;justify-content: space-between;">
                                 <div class="text-danger" hidden>
@@ -237,7 +239,7 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                 </div>
-                                <input type="number" class="form-control" id="hargaTotalCompare" name="hargaTotal" value="" placeholder="harga total...">
+                                <input type="number" class="form-control" id="hargaTotalCompare" name="hargaTotal" value="{{ $taxes->harga_total }}" placeholder="harga total...">
                               </div>
                               <div class=" " style="display: flex;justify-content: space-between;">
                                   <div class="text-danger" hidden>
@@ -255,7 +257,7 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                 </div>
-                                <input type="number" class="form-control" id="diskonCompare" name="diskon" value="00,0" placeholder="diskon...">
+                                <input type="text" class="form-control" id="diskonCompare" name="diskon" value="{{ $taxes->diskon }}" placeholder="diskon...">
                               </div>
                               <div class=" " style="display: flex;justify-content: space-between;">
                                   <div class="text-danger" hidden>
@@ -273,7 +275,7 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                 </div>
-                                <input type="number" class="form-control" id="dppCompare" name="dpp" value="" placeholder="dpp...">
+                                <input type="text" class="form-control" id="dppCompare" name="dpp" value="{{ $taxes->dpp }}" placeholder="dpp...">
                               </div>
                               <div class=" " style="display: flex;justify-content: space-between;">
                                   <div class="text-danger" hidden>
@@ -291,7 +293,7 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                 </div>
-                                <input type="number" class="form-control" id="ppnCompare" name="ppn" value="" placeholder="ppn...">
+                                <input type="text" class="form-control" id="ppnCompare" name="ppn" value="{{ $taxes->ppn }}" placeholder="ppn...">
                               </div>
                               <div class=" " style="display: flex;justify-content: space-between;">
                                   <div class="text-danger" hidden>
@@ -309,7 +311,7 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                 </div>
-                                <input type="number" class="form-control" id="PPnBMCompare" name="ppnbm" value="" placeholder="ppnbm...">
+                                <input type="text" class="form-control" id="PPnBMCompare" name="ppnbm" value="{{ $taxes->ppnbm }}" placeholder="ppnbm...">
                               </div>
                               <div class=" " style="display: flex;justify-content: space-between;">
                                   <div class="text-danger" hidden>
@@ -322,7 +324,7 @@
                           </div>
                           <div class="form-group row">
                             <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Referensi</label>
-                            <textarea class="form-control" id="referensiCompare" name="referensi" value="" placeholder="referensi..."></textarea>
+                            <textarea class="form-control" id="referensiCompare" name="referensi"  placeholder="referensi...">{{ $taxes->referensi }}</textarea>
                             <div class=" " style="display: flex;justify-content: space-between;">
                                 <div class="text-danger" hidden>
                                   Please insert data
@@ -334,275 +336,10 @@
                           </div>
                           
                           <div class="form-group row">
-                              <div class="offset-sm-2 col-sm-10">
-                                  <button type="submit" class="btn btn-primary">Submit</button>
+                              <div class="">
+                                  <button type="submit" class="btn btn-primary">Save</button>
                               </div>
                           </div>
-                        </form>
-                      
-                        <!-- /.post -->
-                      </div>
-                    </div>
-                    <!-- /.tab-content -->
-                  </div><!-- /.card-body -->
-                </div>
-    
-              </div>
-              <!-- /.col -->
-              <div class="col-md-6">
-                <div class="card card-danger card-outline">
-                  <div class="card-header p-2">
-                    <ul class="nav nav-pills">
-                      <li class="nav-item"><a class="nav-link bg-dark active" href="#activity" data-toggle="tab">information detail</a></li>
-                    </ul>
-                  </div><!-- /.card-header -->
-                  <div class="card-body">
-                    <div class="tab-content">
-                      <div class="active tab-pane" id="activity">
-                        <form id="data-form" class="form-horizontal">
-                          <div class="form-group row">
-                              <label for="inputInvoiceNo" class="col-sm-4 col-form-label">Nomor Faktur</label>
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                </div>
-                                <input type="text" class="form-control" id="NoFakturPajak" name="NoFakturPajak" value=""
-                                placeholder="no faktur pajak...">
-                              </div>
-                              <div class=" " style="display: flex;justify-content: space-between;">
-                                  <div class="text-danger" hidden>
-                                    Please insert data
-                                  </div>
-                                  <div class="text-success" position="right">
-                                    Validation score : 100
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputPONo" class="col-sm-4 col-form-label">Tanggal Faktur</label>
-                              
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                </div>
-                                <input type="text" class="form-control" id="TanggalFakturPajak" name="TanggalFakturPajak" value="" placeholder="tanggal faktur pajak...">
-                              </div>
-                              <div class=" " style="display: flex;justify-content: space-between;">
-                                  <div class="text-danger" hidden>
-                                    Please insert data
-                                  </div>
-                                  <div class="text-success" position="right">
-                                    Validation score : 100
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputTerms" class="col-sm-4 col-form-label">NPWP Penjual</label>
-                              
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                </div>
-                                <input type="text" class="form-control" id="NPWPpenjual" name="NPWPpenjual" value="" placeholder="NPWP penjual...">
-                              </div>
-                              <div class=" " style="display: flex;justify-content: space-between;">
-                                  <div class="text-danger" hidden>
-                                    Please insert data
-                                  </div>
-                                  <div class="text-success" position="right">
-                                    Validation score : 100
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputCustomerName" class="col-sm-4 col-form-label">Nama Penjual</label>
-
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                              </div>
-                              <input type="text" class="form-control" id="NamaPenjual" name="NamaPenjual" value="" placeholder="nama penjual...">
-                            </div>
-                            <div class=" " style="display: flex;justify-content: space-between;">
-                                <div class="text-danger" hidden>
-                                  Please insert data
-                                </div>
-                                <div class="text-success" position="right">
-                                  Validation score : 100
-                                </div>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Alamat Penjual</label>
-                              <textarea class="form-control" id="AlamatPenjual" name="AlamatPenjual" value="" placeholder="alamat penjual..."></textarea>
-                             
-                              <div class=" " style="display: flex;justify-content: space-between;">
-                                  <div class="text-danger" hidden>
-                                    Please insert data
-                                  </div>
-                                  <div class="text-success" position="right">
-                                    Validation score : 100
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputSalesPerson" class="col-sm-4 col-form-label">No NPWP Lawan Transaksi</label>
-                            
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                              </div>
-                              <input type="text" class="form-control" id="NoNPWPlawanTransaksi" name="NoNPWPlawanTransaksi" value="" placeholder="no NPWP lawan transaksi...">
-                            </div>
-                            <div class=" " style="display: flex;justify-content: space-between;">
-                                <div class="text-danger" hidden>
-                                  Please insert data
-                                </div>
-                                <div class="text-success" position="right">
-                                  Validation score : 100
-                                </div>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputSalesPerson" class="col-sm-4 col-form-label">NPWP Lawan Transaksi</label>
-                            
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                              </div>
-                              <input type="text" class="form-control" id="NPWPlawanTransaksi" name="NPWPlawanTransaksi" value="" placeholder="NPWP lawan transaksi...">
-                            </div>
-                            <div class=" " style="display: flex;justify-content: space-between;">
-                                <div class="text-danger" hidden>
-                                  Please insert data
-                                </div>
-                                <div class="text-success" position="right">
-                                  Validation score : 100
-                                </div>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Alamat Lawan Transaksi</label>
-                            <textarea class="form-control" id="AlamatLawanTransaksi" name="AlamatLawanTransaksi" placeholder="alamat lawan transaksi..."></textarea>
-                             
-                            <div class=" " style="display: flex;justify-content: space-between;">
-                                <div class="text-danger" hidden>
-                                  Please insert data
-                                </div>
-                                <div class="text-success" position="right">
-                                  Validation score : 100
-                                </div>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputTotal" class="col-sm-4 col-form-label">Harga Total</label>
-                              
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                </div>
-                                <input type="number" class="form-control" id="hargaTotal" name="hargaTotal" value="" placeholder="harga total...">
-                              </div>
-                              <div class=" " style="display: flex;justify-content: space-between;">
-                                  <div class="text-danger" hidden>
-                                    Please insert data
-                                  </div>
-                                  <div class="text-success" position="right">
-                                    Validation score : 100
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputTotal" class="col-sm-4 col-form-label">Diskon</label>
-                              
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                </div>
-                                <input type="number" class="form-control" id="diskon" name="diskon" value="" placeholder="diskon...">
-                              </div>
-                              <div class=" " style="display: flex;justify-content: space-between;">
-                                  <div class="text-danger" hidden>
-                                    Please insert data
-                                  </div>
-                                  <div class="text-success" position="right">
-                                    Validation score : 100
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputPPN" class="col-sm-4 col-form-label">DPP </label>
-                             
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                </div>
-                                <input type="number" class="form-control" id="dpp" name="dpp" value="" placeholder="dpp...">
-                              </div>
-                              <div class=" " style="display: flex;justify-content: space-between;">
-                                  <div class="text-danger" hidden>
-                                    Please insert data
-                                  </div>
-                                  <div class="text-success" position="right">
-                                    Validation score : 100
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputPPN" class="col-sm-4 col-form-label">PPN </label>
-                              
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                </div>
-                                <input type="number" class="form-control" id="ppn" name="ppn" value="" placeholder="ppn...">
-                              </div>
-                              <div class=" " style="display: flex;justify-content: space-between;">
-                                  <div class="text-danger" hidden>
-                                    Please insert data
-                                  </div>
-                                  <div class="text-success" position="right">
-                                    Validation score : 100
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputPPN" class="col-sm-4 col-form-label">PPnBM </label>
-                              
-                              <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                </div>
-                                <input type="number" class="form-control" id="PPnBM" name="ppnbm" value="" placeholder="ppnbm...">
-                              </div>
-                              <div class=" " style="display: flex;justify-content: space-between;">
-                                  <div class="text-danger" hidden>
-                                    Please insert data
-                                  </div>
-                                  <div class="text-success" position="right">
-                                    Validation score : 100
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="inputCustomerAddress" class="col-sm-4 col-form-label">Referensi</label>
-                            <textarea class="form-control" id="referensi" name="referensi" value="" placeholder="referensi..."></textarea>
-                            <div class=" " style="display: flex;justify-content: space-between;">
-                                <div class="text-danger" hidden>
-                                  Please insert data
-                                </div>
-                                <div class="text-success" position="right">
-                                  Validation score : 100
-                                </div>
-                            </div>
-                          </div>
-                          
-                          <div class="form-group row">
-                              <div class="offset-sm-2 col-sm-10">
-                                  <button type="submit" class="btn btn-primary">Submit</button>
-                              </div>
-                          </div>
-                        </form>
                       
                         <!-- /.post -->
                       </div>
@@ -615,6 +352,7 @@
               <!-- /.col -->
             </div>
             <!-- /.row -->
+          </form>
             
           </div>
           <!-- /.col -->
@@ -639,22 +377,22 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
       // Simulasi data JSON
-      const data = {
-        "NoFakturPajak": "030.007-23.23344282",
-        "TanggalFakturPajak": "07 Juli 2023",
-        "NPWPpenjual": "70.535.497.5-424.000",
-        "NamaPenjual": "PT RAD UTAMA RISET",
-        "AlamatPenjual": "RUKO PASAR MODERN BATUNUNGGAL BLOK RA NO 26 RT 000 RW 000, MENGGER , KOTA BANDUNG",
-        "NoNPWPlawanTransaksi": "01.000.013.1-093.000",
-        "NPWPlawanTransaksi": "PT. TELKOM INDONESIA (PERSERO) TBK",
-        "AlamatLawanTransaksi": "JL. JAPATI NO. 1 RT.000 RW.000 SADANG SERANG COBLONG KOTA BANDUNG JAWA BARAT",
-        "hargaTotal": "1.600.000.000,00",
-        "diskon": "0,00",
-        "dpp": "1.600.000.000,00",
-        "ppn": "176.000.000,00",
-        "PPnBM": "0,00",
-        "referensi": "Pembayaran Pengadaan Jasa Survey Net Promoter Score (NPS) Top Down CFU Consumer/Indihome dan DFU Digital Business Tahun 2023 Tahap I"
-      };
+      // const data = {
+      //   "NoFakturPajak": "030.007-23.23344282",
+      //   "TanggalFakturPajak": "07 Juli 2023",
+      //   "NPWPpenjual": "70.535.497.5-424.000",
+      //   "NamaPenjual": "PT RAD UTAMA RISET",
+      //   "AlamatPenjual": "RUKO PASAR MODERN BATUNUNGGAL BLOK RA NO 26 RT 000 RW 000, MENGGER , KOTA BANDUNG",
+      //   "NoNPWPlawanTransaksi": "01.000.013.1-093.000",
+      //   "NPWPlawanTransaksi": "PT. TELKOM INDONESIA (PERSERO) TBK",
+      //   "AlamatLawanTransaksi": "JL. JAPATI NO. 1 RT.000 RW.000 SADANG SERANG COBLONG KOTA BANDUNG JAWA BARAT",
+      //   "hargaTotal": "1.600.000.000,00",
+      //   "diskon": "0,00",
+      //   "dpp": "1.600.000.000,00",
+      //   "ppn": "176.000.000,00",
+      //   "PPnBM": "0,00",
+      //   "referensi": "Pembayaran Pengadaan Jasa Survey Net Promoter Score (NPS) Top Down CFU Consumer/Indihome dan DFU Digital Business Tahun 2023 Tahap I"
+      // };
 
       startLoadingProgress();
 
@@ -802,6 +540,37 @@
           card.style.display = isChecked ? 'block' : 'none';
       });
   });
+</script>
+
+
+
+<script>
+  document.getElementById('file-input').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      const imageUrl = e.target.result;
+
+      // Menampilkan gambar di iframe
+      const iframe = document.getElementById('pdf-iframe');
+      iframe.src = imageUrl;
+
+      // Menyimpan URL gambar ke input hidden
+      const hiddenInput = document.getElementById('image-url');
+      hiddenInput.value = imageUrl;
+    };
+
+    reader.readAsDataURL(file); // Membaca file sebagai Data URL
+  }
+});
+
+// Tombol "Re Scan" untuk mengulang pemilihan file
+document.getElementById('rescan-btn').addEventListener('click', function() {
+  document.getElementById('file-input').click();
+});
+
 </script>
 
 @endsection

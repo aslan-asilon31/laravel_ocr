@@ -400,7 +400,7 @@
           <!-- /.card-footer-->
         </div>
 
-        <div class="container">
+        <div class="">
 
           @yield('content')
         </div>

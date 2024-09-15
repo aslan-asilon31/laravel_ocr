@@ -33,10 +33,10 @@ Route::middleware('auth')->group(function () {
         Route::get('proctored-show', [KirimController::class,'proctored_show'])->name('proctored_show');
         Route::resource('dashboard', DashboardController::class);
         Route::resource('ktp', KtpController::class);
-        Route::get('ktp-scan', [KtpController::class,'scan'])->name('ktp.scan');
+        Route::post('ktp-scan', [KtpController::class,'scan'])->name('ktp.scan');
         Route::get('purchase-order-scan', [LembarPoController::class,'scan'])->name('purchase-order.scan');
         Route::resource('purchase-order', LembarPoController::class);
-        Route::get('tax-invoice-scan', [TaxInvoiceController::class,'scan'])->name('tax-invoice.scan');
+        Route::post('tax-invoice-scan', [TaxInvoiceController::class,'scan'])->name('tax-invoice.scan');
         Route::resource('tax-invoice', TaxInvoiceController::class);
         Route::get('ijasah-scan', [IjasahController::class,'scan'])->name('ijasah.scan');
         Route::resource('ijasah', IjasahController::class);
