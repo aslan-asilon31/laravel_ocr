@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Models\TaxPpn;
 use Carbon\Carbon;
+use App\Models\TaxPpn;
 
 class TaxInvoiceController extends Controller
 {
@@ -27,11 +27,14 @@ class TaxInvoiceController extends Controller
         $file = $request->file('doc_fp_img');
         $isUrl = $request->input('is_url');
 
+        // Ambil Bearer token dari user yang login
+        $accessToken = auth()->user()->access_token;
+
         // Kirim file dan parameter tambahan ke API eksternal
         try {
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
-                'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNzI2MzUxMzQyLCJqdGkiOiI1ZmRmMzU4OS05OWU1LTQ3YTUtYjIyMi0zZGNhMDZlMGYwYjciLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjp7ImlkIjoxLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6Imlkbm1ha2Vyc3BhY2VAZ21haWwuY29tIn0sIm5iZiI6MTcyNjM1MTM0MiwiY3NyZiI6ImY3MjNjNDk2LWNhNjAtNDNiOC1iNzE3LTU4YTUyOTBhZTVmNCIsImV4cCI6MTcyNjQzNzc0Mn0.1dJ2QSteqE40kYqVX5xPxKto4yy2m8lDSwshlV-2BkA',
+                'Authorization' => 'Bearer  '. $accessToken,
             ])->attach(
                 'doc_fp_img', file_get_contents($file->getRealPath()), $file->getClientOriginalName()
             )->timeout(600) // Set timeout to 60 seconds
@@ -41,30 +44,13 @@ class TaxInvoiceController extends Controller
 
             // Tangkap dan decode JSON dari API eksternal
             $responseJson = $response->json();
-
+            $invoices = $responseJson;
 
             // Simpan file ke folder public/scan/tax
             $imageName = $file->hashName();
             $file->move(public_path('scan/tax'), $imageName);
             $imageUrl = asset('scan/tax/' . $imageName);
 
-            // Siapkan data untuk diteruskan ke method store
-            $dataToStore = [
-                'image' => $imageUrl,
-                'no_faktur_pajak' => $responseJson['data']['NoFakturPajak'] ?? null,
-                'tanggal_faktur_pajak' => $responseJson['data']['TanggalFakturPajak'] ?? null,
-                'npwp_penjual' => $responseJson['data']['NPWPpenjual'] ?? null,
-                'nama_penjual' => $responseJson['data']['NamaPenjual'] ?? null,
-                'alamat_penjual' => $responseJson['data']['AlamatPenjual'] ?? null,
-                'no_npwp_lawan_transaksi' => $responseJson['data']['NoNPWPlawanTransaksi'] ?? null,
-                'alamat_lawan_transaksi' => $responseJson['data']['AlamatLawanTransaksi'] ?? null,
-                'harga_total' => $responseJson['data']['hargaTotal'] ?? null,
-                'diskon' => $responseJson['data']['diskon'] ?? null,
-                'dpp' => $responseJson['data']['dpp'] ?? null,
-                'ppn' => $responseJson['data']['ppn'] ?? null,
-                'ppnbm' => $responseJson['data']['PPnBM'] ?? null,
-                'referensi' => $responseJson['data']['referensi'] ?? null,
-            ];
 
             // Panggil method store dan tangkap responsenya
             return $this->store(new Request($dataToStore), $responseJson['data']);

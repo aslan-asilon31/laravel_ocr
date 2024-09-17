@@ -24,6 +24,7 @@ use App\Http\Controllers\KirimController;
 Route::get('/', function () {
     return view('auth/login');
 });
+Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 Auth::routes();
 
@@ -34,13 +35,13 @@ Route::middleware('auth')->group(function () {
         Route::resource('dashboard', DashboardController::class);
         Route::resource('ktp', KtpController::class);
         Route::post('ktp-scan', [KtpController::class,'scan'])->name('ktp.scan');
-        Route::get('purchase-order-scan', [LembarPoController::class,'scan'])->name('purchase-order.scan');
+        Route::post('purchase-order-scan', [LembarPoController::class,'scan'])->name('purchase-order.scan');
         Route::resource('purchase-order', LembarPoController::class);
         Route::post('tax-invoice-scan', [TaxInvoiceController::class,'scan'])->name('tax-invoice.scan');
         Route::resource('tax-invoice', TaxInvoiceController::class);
-        Route::get('ijasah-scan', [IjasahController::class,'scan'])->name('ijasah.scan');
+        Route::post('ijasah-scan', [IjasahController::class,'scan'])->name('ijasah.scan');
         Route::resource('ijasah', IjasahController::class);
-        Route::get('transkrip-nilai-scan', [TranskripNilaiController::class,'scan'])->name('transkrip-nilai.scan');
+        Route::post('transkrip-nilai-scan', [TranskripNilaiController::class,'scan'])->name('transkrip-nilai.scan');
         Route::resource('transkrip-nilai', TranskripNilaiController::class);
         Route::resource('exam-proctoring', ExamProctoringController::class);
 

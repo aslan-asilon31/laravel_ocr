@@ -37,7 +37,7 @@
                               </div>
                             </form>
                             <img id="" style="max-width: 100%;" class="img-preview"
-                              src="{{asset('academic-transcript.jpg')}}" alt="Preview Gambar">
+                              src="{{ asset($fileUrl) }}" alt="Preview Gambar">
 
                             
 
@@ -62,7 +62,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input value="UNIVERSITAS SUMATERA UTARA" type="text" class="form-control" id="UniversitasCompare" name="Universitas" placeholder="Nama...">
+                                    <input value="" type="text" class="form-control" id="UniversitasCompare" name="Universitas" placeholder="Nama...">
                                   </div>
                                   <div class=" " style="display: flex;justify-content: space-between;">
                                     <div class="text-danger" hidden>
@@ -80,7 +80,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="0105183387" type="text" class="form-control" id="NIMCompare" name="NIM" value=""
+                                      <input value="" type="text" class="form-control" id="NIMCompare" name="NIM" value=""
                                       placeholder="universitas...">
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">
@@ -99,7 +99,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="Tasya Rahmadina" type="text" class="form-control" id="NamaCompare" name="Nama" value=""
+                                      <input value="" type="text" class="form-control" id="NamaCompare" name="Nama" value=""
                                       placeholder="nama...">
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">
@@ -118,7 +118,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="Ilmu Komunikasi" type="text" class="form-control" id="Jurusan_StudiCompare" name="Jurusan_Studi"
+                                      <input value="" type="text" class="form-control" id="Jurusan_StudiCompare" name="Jurusan_Studi"
                                       value="" placeholder="jurusan_studi...">
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">
@@ -137,8 +137,8 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="Sarjana" type="text" class="form-control" id="Jenjang_GelarCompare" name="Jenjang_Gelar"
-                                      value="" placeholder="jenjang_gelar...">
+                                      <input value="" type="text" class="form-control" id="Jenjang_GelarCompare" name="Jenjang_Gelar"
+                                       placeholder="jenjang_gelar...">
                                    
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">
@@ -157,7 +157,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="3.78" type="text" class="form-control" id="IPK" name="IPKCompare" value=""
+                                      <input value="" type="text" class="form-control" id="IPK" name="IPKCompare" value=""
                                       placeholder="ipk...">
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">
@@ -176,7 +176,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="FAKULTAS ILMU SOSIAL, ilmu sosial" type="text" class="form-control" id="FakultasCompare" name="Fakultas" value=""
+                                      <input value="" type="text" class="form-control" id="FakultasCompare" name="Fakultas" value=""
                                       placeholder="fakultas...">
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">
@@ -226,7 +226,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input value="UNIVERSITAS SUMATERA UTARA" type="text" class="form-control" id="Universitas" name="Universitas" value="" placeholder="Nama Universitas...">
+                                    <input value="{{ $transcripts['data']['Universitas'] ?? '' }}" type="text" class="form-control" id="Universitas" name="Universitas" value="" placeholder="Nama Universitas...">
                                   </div>
                                   <div class=" " style="display: flex;justify-content: space-between;">
                                     <div class="text-danger" hidden>
@@ -244,7 +244,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="0105183387" type="text" class="form-control" id="NIM" name="NIM" value=""
+                                      <input  type="text" class="form-control" id="NIM" name="NIM" value=""
                                       placeholder="universitas...">
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">
@@ -263,7 +263,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="Tasya Rahmadina" type="text" class="form-control" id="Nama" name="Nama" value=""
+                                      <input type="text" class="form-control" id="Nama" name="Nama" value="{{ $transcripts['data']['Nama'] ?? '' }}"
                                       placeholder="nama...">
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">
@@ -282,8 +282,8 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="Ilmu Komunikasi" type="text" class="form-control" id="Jurusan_Studi" name="Jurusan_Studi"
-                                      value="" placeholder="jurusan_studi...">
+                                      <input  type="text" class="form-control" id="Jurusan_Studi" name="Jurusan_Studi"
+                                      value="{{ $transcripts['data']['Jurusan_Studi'] ?? '' }}" placeholder="jurusan_studi...">
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">
                                       <div class="text-danger" hidden>
@@ -301,8 +301,8 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="Sarjana" type="text" class="form-control" id="Jenjang_Gelar" name="Jenjang_Gelar"
-                                      value="" placeholder="jenjang_gelar...">
+                                      <input  type="text" class="form-control" id="Jenjang_Gelar" name="Jenjang_Gelar"
+                                      value="{{ $transcripts['data']['Jenjang_Gelar'] ?? '' }}" placeholder="jenjang_gelar...">
                                    
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">
@@ -321,7 +321,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="3.78" type="text" class="form-control" id="IPK" name="IPK" value=""
+                                      <input  type="text" class="form-control" id="IPK" name="IPK" value="{{ $transcripts['data']['IPK'] ?? '' }}"
                                       placeholder="ipk...">
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">
@@ -340,7 +340,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                       </div>
-                                      <input value="FAKULTAS ILMU SOSIAL, ilmu sosial" type="text" class="form-control" id="Fakultas" name="Fakultas" value=""
+                                      <input  type="text" class="form-control" id="Fakultas" name="Fakultas" value="{{ $transcripts['data']['Fakultas'] ?? '' }}"
                                       placeholder="fakultas...">
                                     </div>
                                     <div class=" " style="display: flex;justify-content: space-between;">

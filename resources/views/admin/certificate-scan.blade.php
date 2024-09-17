@@ -32,7 +32,7 @@
                   <h5 class="bg-success text-center" id="scan-status" style="display: none;">Scan Success</h6>
 
                     <img  style="max-width: 100%;" class="img-preview"
-                      src="{{ asset('ijasah.jpg')}}" alt="Preview Gambar">
+                      src="{{ asset($fileUrl) }}" alt="Preview Gambar">
 
                     <form id="upload-form" class="mt-10">
                       <div class="" style="display: flex;justify-content: space-between;">
@@ -60,7 +60,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="namaCompare" name="nama" value="Siti Humaira"
+                            <input type="text" class="form-control" id="namaCompare" name="nama" value=""
                               placeholder="nama...">
                           </div>
 
@@ -79,7 +79,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="NIMCompare" name="NIM" value="2002110064"
+                            <input type="text" class="form-control" id="NIMCompare" name="NIM" value=""
                               placeholder="NIM...">
                           </div>
 
@@ -98,7 +98,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="univCompare" name="univ" value="UNIVERSITAS MUHAMMADIYAH ACEH"
+                            <input type="text" class="form-control" id="univCompare" name="univ" value=""
                               placeholder="nama universitas...">
                           </div>
 
@@ -117,7 +117,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="gelarCompare" name="gelar" value="Sarjana Ekonomi (S.E.)"
+                            <input type="text" class="form-control" id="gelarCompare" name="gelar" value=""
                               placeholder="gelar...">
                           </div>
 
@@ -136,7 +136,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="jurusanCompare" name="jurusan" value="Sarjana"
+                            <input type="text" class="form-control" id="jurusanCompare" name="jurusan" value=""
                               placeholder="jurusan...">
                           </div>
 
@@ -155,7 +155,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="jurusanCompare" name="jurusan" value="Akuntansi"
+                            <input type="text" class="form-control" id="jurusanCompare" name="jurusan" value=""
                               placeholder="jurusan...">
                           </div>
 
@@ -174,7 +174,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="statusCompare" name="status" value="telah menyelesaikan"
+                            <input type="text" class="form-control" id="statusCompare" name="status" value=""
                               placeholder="status...">
                           </div>
 
@@ -195,7 +195,7 @@
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
                             <input type="text" class="form-control" id="ijazah_atau_sklCompare"
-                              name="ijazah_atau_skl" value="IJAZAH" placeholder="Ijasah /  SKL...">
+                              name="ijazah_atau_skl" value="" placeholder="Ijasah /  SKL...">
                           </div>
 
                           <div class=" " style="display: flex;justify-content: space-between;">
@@ -215,7 +215,7 @@
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
                             <input type="text" class="form-control" id="jabatan_penandatanganCompare"
-                              name="jabatan_penandatangan" value="Rektor" placeholder="jabatan penandatangan...">
+                              name="jabatan_penandatangan" value="" placeholder="jabatan penandatangan...">
                           </div>
 
                           <div class=" " style="display: flex;justify-content: space-between;">
@@ -234,7 +234,7 @@
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
                             <input type="date" class="form-control" id="tanggal_tahun_lulusCompare"
-                              name="tanggal_tahun_lulus" value="2023-03-16" placeholder="waktu kelulusan...">
+                              name="tanggal_tahun_lulus" value="" placeholder="waktu kelulusan...">
                           </div>
 
                           <div class=" " style="display: flex;justify-content: space-between;">
@@ -282,7 +282,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="nama" name="nama" value="Siti Humaira"
+                            <input type="text" class="form-control" id="nama" name="nama" value=""
                               placeholder="nama...">
                           </div>
 
@@ -301,7 +301,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="NIM" name="NIM" value="2002110064"
+                            <input type="text" class="form-control" id="NIM" name="NIM" value=""
                               placeholder="NIM...">
                           </div>
 
@@ -320,7 +320,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="univ" name="univ" value="UNIVERSITAS MUHAMMADIYAH ACEH"
+                            <input type="text" class="form-control" id="univ" name="univ" value=""
                               placeholder="nama universitas...">
                           </div>
 
@@ -339,7 +339,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="gelar" name="gelar" value="Sarjana Ekonomi (S.E.)"
+                            <input type="text" class="form-control" id="gelar" name="gelar" value=""
                               placeholder="gelar...">
                           </div>
 
@@ -358,7 +358,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="jenjang" name="jenjang" value="Sarjana"
+                            <input type="text" class="form-control" id="jenjang" name="jenjang" value=""
                               placeholder="jenjang...">
                           </div>
 
@@ -377,7 +377,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="jurusan" name="jurusan" value="Akuntansi"
+                            <input type="text" class="form-control" id="jurusan" name="jurusan" value=""
                               placeholder="jurusan...">
                           </div>
 
@@ -396,7 +396,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="status" name="status" value="telah menyelesaikan"
+                            <input type="text" class="form-control" id="status" name="status" value=""
                               placeholder="status...">
                           </div>
 
@@ -417,7 +417,7 @@
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
                             <input type="text" class="form-control" id="ijazah_atau_skl" name="ijazah_atau_skl"
-                              value="IJAZAH" placeholder="Ijasah /  SKL...">
+                              value="" placeholder="Ijasah /  SKL...">
                           </div>
 
                           <div class=" " style="display: flex;justify-content: space-between;">
@@ -437,7 +437,7 @@
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
                             <input type="text" class="form-control" id="jabatan_penandatangan"
-                              name="jabatan_penandatangan" value="Rektor" placeholder="jabatan penandatangan...">
+                              name="" value="" placeholder="jabatan penandatangan...">
                           </div>
 
                           <div class=" " style="display: flex;justify-content: space-between;">
@@ -456,7 +456,7 @@
                               <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                             </div>
                             <input type="date" class="form-control" id="tanggal_tahun_lulus"
-                              name="tanggal_tahun_lulus" value="2023-03-16" placeholder="waktu kelulusan...">
+                              name="tanggal_tahun_lulus" value="" placeholder="waktu kelulusan...">
                           </div>
 
                           <div class=" " style="display: flex;justify-content: space-between;">

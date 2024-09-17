@@ -115,16 +115,10 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right p-0">
           <a href="#" class="dropdown-item active">
+            <i class="flag-icon flag-icon-id mr-2"></i> Indonesia
+          </a>
+          <a href="#" class="dropdown-item ">
             <i class="flag-icon flag-icon-us mr-2"></i> English
-          </a>
-          <a href="#" class="dropdown-item">
-            <i class="flag-icon flag-icon-de mr-2"></i> German
-          </a>
-          <a href="#" class="dropdown-item">
-            <i class="flag-icon flag-icon-fr mr-2"></i> French
-          </a>
-          <a href="#" class="dropdown-item">
-            <i class="flag-icon flag-icon-es mr-2"></i> Spanish
           </a>
         </div>
       </li>
@@ -132,7 +126,7 @@
       <li class="dropdown user user-menu mt-2">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <img src="{{asset('project-ocr/dist/img/avatar-3d/man.jpg')}}" class="user-image" alt="User Image">
-          <span class="hidden-xs">Sulaslan Setiawan</span>
+          <span class="hidden-xs">{{ auth()->user()->name }}</span>
         </a>
         <ul class="dropdown-menu">
 
@@ -141,8 +135,7 @@
           <li class="user-header">
             <img src="{{asset('project-ocr/dist/img/avatar-3d/man.jpg')}}" class="img-circle" alt="User Image">
             <p>
-              Sulaslan Setiawan - Web Developer
-              <small>Member since Nov. 2012</small>
+              {{ auth()->user()->name }}
             </p>
           </li>
 
@@ -250,11 +243,18 @@
               </li>
               <!-- Sign Out -->
               <li class="nav-item">
-                  <a href="{{ route('logout') }}" class="nav-link text-white">
+                  <a href="{{ route('logout') }}" class="nav-link text-white"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                       <i class="nav-icon fa fa-sign-out-alt"></i>
-                      <p>Sign Out</p>
+                      {{ __('Logout') }}
                   </a>
+
+                  <!-- Form logout tersembunyi -->
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
               </li>
+
           </ul>
       </nav>
 

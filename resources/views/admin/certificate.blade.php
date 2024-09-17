@@ -30,9 +30,9 @@
                         <img id="image-preview" alt="Image Preview">
 
                         <!-- Form Upload -->
-                        <!-- <form action="{{ route('ijasah.scan') }}" id="upload-form" class="mt-10"> -->
                           <div style="display: flex; justify-content: space-between;">
-                              <input type="file" id="file-input" style="width: 200px;" accept=".pdf, image/*" required onchange="handleFile()">
+                              <input type="file" id="file-input" name="doc_transkrip_img" style="width: 200px;" accept=".pdf, image/*" required onchange="handleFile()">
+                              <input type="text" id="" name="is_url" value="0" hidden>
                               <button type="submit" class="btn bg-dark" style="width: 100px;">Scan</button>
                           </div>
 

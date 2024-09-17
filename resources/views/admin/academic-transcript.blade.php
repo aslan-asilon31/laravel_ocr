@@ -3,145 +3,147 @@
 @section('title','Transkrip Nilai')
 @section('content')
 
-<div id="upload-section">
+            <div id="upload-section">
               <!-- The original row with the form -->
               <div class="row upload-row">
                 <div class="col-12">
                   <div class="row">
                     <div class="col-md-6">
-                      <!-- Profile Image -->
-                      <div class="card card-danger card-outline">
-                        <div class="nav-item">
-                          <button type="button" class="btn btn-tool" data-card-widget="maximize"><i
-                              class="fas fa-expand"></i></button>
-                        </div>
-                        <div class="card-body box-profile">
-                          <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="academic-transcript-is-compare">
-                            <label for="academic-transcript-is-compare" class="custom-control-label">
-                                <h6>Is Compare ?</h6>
-                            </label>
+                      <form method="POST" action="{{ route('transkrip-nilai.scan')}}" id="upload-form"  class="mt-10"  enctype="multipart/form-data">
+                        @csrf
+                        <!-- Profile Image -->
+                        <div class="card card-danger card-outline">
+                          <div class="nav-item">
+                            <button type="button" class="btn btn-tool" data-card-widget="maximize"><i
+                                class="fas fa-expand"></i></button>
                           </div>
-                          <h6 class="">Upload a PDF or image file (JPEG, PNG, GIF, WebP, BMP, SVG) </h6>
-
-                      
-                          <!-- Iframe to display PDF/image -->
-                          <iframe id="pdf-preview" style="outline: none !important; border: none;" src="" width="100%" height="800"></iframe>  
-                          <img id="image-preview" alt="Image Preview">
-
-                          <!-- Form Upload -->
-                          <form action="{{ route('transkrip-nilai.scan')}}" id="upload-form" class="mt-10">
-                            <div style="display: flex; justify-content: space-between;">
-                                <input type="file" id="file-input" style="width: 200px;" accept=".pdf, image/*" required onchange="handleFile()">
-                                <button type="submit" class="btn bg-dark" style="width: 100px;">Scan</button>
+                          <div class="card-body box-profile">
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="academic-transcript-is-compare">
+                              <label for="academic-transcript-is-compare" class="custom-control-label">
+                                  <h6>Is Compare ?</h6>
+                              </label>
                             </div>
-                          </form>
-                        </div>
-                        <!-- /.card-body -->
-                      </div>
-                      <!-- /.card -->
-                      <div class="card card-danger card-outline" id="academic-transcript-is-compare-card">
-                        <div class="card-header p-2">
+                            <h6 class="">Upload a PDF or image file (JPEG, PNG, GIF, WebP, BMP, SVG) </h6>
+
                         
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                          <div class="tab-content">
-                            <div class="active tab-pane" id="activity">
-                              <form id="data-form" class="form-horizontal">
-                                <div class="form-group row">
-                                  <label for="inputName" class="col-sm-4 col-form-label">Nama Universitas</label>
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="Universitas" name="Universitas" placeholder="Nama...">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputNIK" class="col-sm-4 col-form-label">NIM</label>
-                                 
-                                    <div class="input-group mb-3">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                      </div>
-                                      <input type="text" class="form-control" id="NIM" name="NIM" value=""
-                                      placeholder="universitas...">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputNIK" class="col-sm-4 col-form-label">Nama</label>
-                                  
-                                    <div class="input-group mb-3">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                      </div>
-                                      <input type="text" class="form-control" id="Nama" name="Nama" value=""
-                                      placeholder="nama...">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputNIK" class="col-sm-4 col-form-label">Jurusan</label>
-                                  
-                                    <div class="input-group mb-3">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                      </div>
-                                      <input type="text" class="form-control" id="Jurusan_Studi" name="Jurusan_Studi"
-                                      value="" placeholder="jurusan_studi...">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputNIK" class="col-sm-4 col-form-label">Gelar</label>
-                                  
-                                    <div class="input-group mb-3">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                      </div>
-                                      <input type="text" class="form-control" id="Jenjang_Gelar" name="Jenjang_Gelar"
-                                      value="" placeholder="jenjang_gelar...">
-                                   
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputKecamatan" class="col-sm-4 col-form-label">IPK</label>
-                                  
-                                    <div class="input-group mb-3">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                      </div>
-                                      <input type="text" class="form-control" id="IPK" name="IPK" value=""
-                                      placeholder="ipk...">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputKecamatan" class="col-sm-4 col-form-label">Nama Fakultas</label>
-                                  
-                                    <div class="input-group mb-3">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-                                      </div>
-                                      <input type="text" class="form-control" id="Fakultas" name="Fakultas" value=""
-                                      placeholder="fakultas...">
-                                    </div>
+                            <!-- Iframe to display PDF/image -->
+                            <iframe id="pdf-preview" style="outline: none !important; border: none;" src="" width="100%" height="800"></iframe>  
+                            <img id="image-preview" alt="Image Preview">
 
-                                </div>
-                                <!-- Add other form fields here -->
-                                <div class="form-group row">
-                                  <div class="offset-sm-2 col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                    <button class="btn btn-danger" onclick="clearForm()">Clear Form</button>
-                                  </div>
-                                </div>
-                              </form>
-                              <!-- /.post -->
-                            </div>
+                            <!-- Form Upload -->
+                              <div style="display: flex; justify-content: space-between;">
+                                  <input type="text" name="is_url" value="0" hidden>
+                                  <input type="file" id="file-input" name="doc_transkrip_img" style="width: 200px;" accept=".pdf, image/*" required onchange="handleFile()">
+                                  <button type="submit" class="btn bg-dark" style="width: 100px;">Scan</button>
+                              </div>
                           </div>
-                          <!-- /.tab-content -->
+                          <!-- /.card-body -->
                         </div>
-                        <!-- /.card-body -->
-                      </div>
-                      <!-- /.card -->
+                        <!-- /.card -->
+                        <div class="card card-danger card-outline" id="academic-transcript-is-compare-card">
+                          <div class="card-header p-2">
+                          
+                          </div>
+                          <!-- /.card-header -->
+                          <div class="card-body">
+                            <div class="tab-content">
+                              <div class="active tab-pane" id="activity">
+                                <form id="data-form" class="form-horizontal">
+                                  <div class="form-group row">
+                                    <label for="inputName" class="col-sm-4 col-form-label">Nama Universitas</label>
+                                    <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                      </div>
+                                      <input type="text" class="form-control" id="Universitas" name="Universitas" placeholder="Nama...">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputNIK" class="col-sm-4 col-form-label">NIM</label>
+                                  
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="NIM" name="NIM" value=""
+                                        placeholder="universitas...">
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputNIK" class="col-sm-4 col-form-label">Nama</label>
+                                    
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="Nama" name="Nama" value=""
+                                        placeholder="nama...">
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputNIK" class="col-sm-4 col-form-label">Jurusan</label>
+                                    
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="Jurusan_Studi" name="Jurusan_Studi"
+                                        value="" placeholder="jurusan_studi...">
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputNIK" class="col-sm-4 col-form-label">Gelar</label>
+                                    
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="Jenjang_Gelar" name="Jenjang_Gelar"
+                                        value="" placeholder="jenjang_gelar...">
+                                    
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputKecamatan" class="col-sm-4 col-form-label">IPK</label>
+                                    
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="IPK" name="IPK" value=""
+                                        placeholder="ipk...">
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputKecamatan" class="col-sm-4 col-form-label">Nama Fakultas</label>
+                                    
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fas fa-terminal"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="Fakultas" name="Fakultas" value=""
+                                        placeholder="fakultas...">
+                                      </div>
+
+                                  </div>
+                                  <!-- Add other form fields here -->
+                                  <div class="form-group row">
+                                    <div class="offset-sm-2 col-sm-10">
+                                      <button type="submit" class="btn btn-primary">Save</button>
+                                      <button class="btn btn-danger" onclick="clearForm()">Clear Form</button>
+                                    </div>
+                                  </div>
+                                <!-- /.post -->
+                              </div>
+                            </div>
+                            <!-- /.tab-content -->
+                          </div>
+                          <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                      </form>
+
                     </div>
                     <!-- /.col -->
                     <div class="col-md-6">

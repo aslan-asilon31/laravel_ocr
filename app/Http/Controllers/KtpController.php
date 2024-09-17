@@ -39,11 +39,14 @@ class KtpController extends Controller
         $tenantId = $request->input('tenant_id');
         $method = $request->input('method');
 
+        // Ambil Bearer token dari user yang login
+        $accessToken = auth()->user()->access_token;
+
         // Kirim file dan parameter tambahan ke API eksternal
         try {
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
-                'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNzI2MzUxMzQyLCJqdGkiOiI1ZmRmMzU4OS05OWU1LTQ3YTUtYjIyMi0zZGNhMDZlMGYwYjciLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjp7ImlkIjoxLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6Imlkbm1ha2Vyc3BhY2VAZ21haWwuY29tIn0sIm5iZiI6MTcyNjM1MTM0MiwiY3NyZiI6ImY3MjNjNDk2LWNhNjAtNDNiOC1iNzE3LTU4YTUyOTBhZTVmNCIsImV4cCI6MTcyNjQzNzc0Mn0.1dJ2QSteqE40kYqVX5xPxKto4yy2m8lDSwshlV-2BkA',
+                'Authorization' => 'Bearer  '. $accessToken,
             ])->attach(
                 'doc_ktp_img', file_get_contents($movedFilePath), $fileName
             )->timeout(600)->post('http://localhost:5000/ocr_api/v2/ktp', [

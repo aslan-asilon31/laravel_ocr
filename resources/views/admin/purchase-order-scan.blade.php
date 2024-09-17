@@ -31,7 +31,7 @@
                             <h5 class="bg-success text-center" id="progress-text">0% Complete (success)</h6>
                           </div>
                           <h5 class="bg-success text-center" id="scan-status" style="display: none;">Scan Success</h6>
-                            <iframe id="pdf-iframe" src="{{asset('invoice1.jpg')}}" width="100%"
+                            <iframe id="pdf-iframe" src="{{ asset($fileUrl) }}" width="100%"
                             height="600"></iframe>
                             
                             <form id="upload-form" class="mt-10">
@@ -401,7 +401,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="text" class="form-control is-valid" id="nama_vendor" name="nama_vendor"
+                                    <input type="text" class="form-control is-valid" id="nama_vendor" name="nama_vendor" value="{{ $invoices['data']['nama_vendor'] ?? '' }}"
                                       placeholder="Nama...">
                                   </div>
 
@@ -422,7 +422,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="text" class="form-control is-valid" id="no_invoice" name="no_invoice"
+                                    <input type="text" class="form-control is-valid" id="no_invoice" name="no_invoice" value="{{ $invoices['data']['no_invoice'] ?? '' }}"
                                       placeholder="No Invoice...">
                                   </div>
 
@@ -444,7 +444,7 @@
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
                                     <input type="date" class="form-control is-valid" id="tanggal_invoice"
-                                      name="tanggal_invoice" placeholder="Tanggal Invoice...">
+                                      name="tanggal_invoice" value="{{ $invoices['data']['tanggal_invoice'] ?? '' }}" placeholder="Tanggal Invoice...">
                                   </div>
 
                                   <div class=" " style="display: flex;justify-content: space-between;">
@@ -465,7 +465,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="text" class="form-control is-valid" id="Periode" name="Periode"
+                                    <input type="text" class="form-control is-valid" id="Periode" name="Periode" value="{{ $invoices['data']['Periode'] ?? '' }}"
                                       placeholder="Periode ...">
                                   </div>
 
@@ -485,7 +485,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="text" class="form-control is-valid" id="no_kontrak" name="no_kontrak"
+                                    <input type="text" class="form-control is-valid" id="no_kontrak" name="no_kontrak" value="{{ $invoices['data']['no_kontrak'] ?? '' }}"
                                       placeholder="No Kontrak ...">
                                   </div>
 
@@ -505,7 +505,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="number" class="form-control is-valid" id="DPP" name="DPP"
+                                    <input type="number" class="form-control is-valid" id="DPP" name="DPP" value="{{ $invoices['data']['DPP'] ?? '' }}"
                                       placeholder="DPP..">
                                   </div>
 
@@ -525,7 +525,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="number" class="form-control is-valid" id="Tax" name="Tax"
+                                    <input type="number" class="form-control is-valid" id="Tax" name="Tax" value="{{ $invoices['data']['Tax'] ?? '' }}"
                                       placeholder="Tax...">
                                   </div>
 
@@ -545,7 +545,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="number" class="form-control is-valid" id="Total" name="Total"
+                                    <input type="number" class="form-control is-valid" id="Total" name="Total" value="{{ $invoices['data']['Total'] ?? '' }}"
                                       placeholder="Total...">
                                   </div>
 
@@ -565,7 +565,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="text" class="form-control is-valid" id="Type_Tax" name="Type_Tax"
+                                    <input type="text" class="form-control is-valid" id="Type_Tax" name="Type_Tax" value="{{ $invoices['data']['Type_Tax'] ?? '' }}"
                                       placeholder="Tipe Tax">
                                   </div>
 
@@ -586,7 +586,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="text" class="form-control is-valid" id="No_Rek" name=""
+                                    <input type="text" class="form-control is-valid" id="No_Rek" name="" value="{{ $invoices['data']['No_Rek'] ?? '' }}"
                                       placeholder="No Rekening...">
                                   </div>
 
@@ -606,7 +606,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="text" class="form-control is-valid" id="Nama_Rek" name="Nama_Rek"
+                                    <input type="text" class="form-control is-valid" id="Nama_Rek" name="Nama_Rek" value="{{ $invoices['data']['Nama_Rek'] ?? '' }}"
                                       placeholder="Nama Rekening...">
                                   </div>
 
@@ -625,7 +625,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="text" class="form-control is-valid" id="Nama_Bank" name="Nama_Bank"
+                                    <input type="text" class="form-control is-valid" id="Nama_Bank" name="Nama_Bank" value="{{ $invoices['data']['Nama_Bank'] ?? '' }}"
                                       placeholder="Nama Bank...">
                                   </div>
 
@@ -646,7 +646,7 @@
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
                                     <input type="text" class="form-control is-valid" id="Type_Transaksi"
-                                      name="Type_Transaksi" placeholder="Type Transaksi...">
+                                      name="Type_Transaksi" value="{{ $invoices['data']['Type_Transaksi'] ?? '' }}" placeholder="Type Transaksi...">
                                   </div>
 
                                   <div class=" " style="display: flex;justify-content: space-between;">
@@ -665,7 +665,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
-                                    <input type="text" class="form-control is-valid" id="Meterai" name="Meterai"
+                                    <input type="text" class="form-control is-valid" id="Meterai" name="Meterai" value="{{ $invoices['data']['Meterai'] ?? '' }}"
                                       placeholder="Meterai...">
                                   </div>
 
@@ -686,7 +686,7 @@
                                       <span class="input-group-text"><i class="fas fa-terminal"></i></span>
                                     </div>
                                     <input type="number" class="form-control is-valid" id="NILAI_METERAI"
-                                      name="NILAI_METERAI" placeholder="Nilai Meterai">
+                                      name="NILAI_METERAI" value="{{ $invoices['data']['NILAI METERAI'] ?? '' }}" placeholder="Nilai Meterai">
                                   </div>
 
                                   <div class=" " style="display: flex;justify-content: space-between;">
