@@ -38,6 +38,10 @@ class TranskripNilaiController extends Controller
         // Ambil Bearer token dari user yang login
         $accessToken = auth()->user()->access_token;
 
+        $flaskPort = env('FLASK_PORT', '5000'); // Mengambil port dari variabel lingkungan, default ke 5000 jika tidak ada
+        $flaskUrl = "http://localhost:$flaskPort";
+
+
         // Kirim file dan parameter tambahan ke API eksternal
         try {
             $response = Http::withHeaders([
@@ -45,7 +49,7 @@ class TranskripNilaiController extends Controller
                 'Authorization' => 'Bearer  '. $accessToken,
             ])->attach(
                 'doc_transkrip_img', file_get_contents($movedFilePath), $fileName
-            )->timeout(600)->post('http://localhost:5000/ocr_api/v2/transkrip', [
+            )->timeout(600)->post('$flaskUrl/ocr_api/v2/transkrip', [
                 'is_url' => $isUrl,
             ]);
 

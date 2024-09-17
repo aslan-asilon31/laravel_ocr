@@ -29,6 +29,8 @@ class TaxInvoiceController extends Controller
 
         // Ambil Bearer token dari user yang login
         $accessToken = auth()->user()->access_token;
+        $flaskPort = env('FLASK_PORT', '5000'); // Mengambil port dari variabel lingkungan, default ke 5000 jika tidak ada
+        $flaskUrl = "http://localhost:$flaskPort";
 
         // Kirim file dan parameter tambahan ke API eksternal
         try {
@@ -38,7 +40,7 @@ class TaxInvoiceController extends Controller
             ])->attach(
                 'doc_fp_img', file_get_contents($file->getRealPath()), $file->getClientOriginalName()
             )->timeout(600) // Set timeout to 60 seconds
-            ->post('http://localhost:5000/ocr_api/v1/faktur_pajak', [
+            ->post('$flaskUrl/ocr_api/v1/faktur_pajak', [
                 'is_url' => $isUrl,
             ]);
 

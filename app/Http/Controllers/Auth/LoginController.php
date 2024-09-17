@@ -25,6 +25,9 @@ class LoginController extends Controller
 
         $email = $request->email;
         $password = $request->password;
+        $flaskPort = env('FLASK_PORT', '5000'); // Mengambil port dari variabel lingkungan, default ke 5000 jika tidak ada
+        $flaskUrl = "http://localhost:$flaskPort";
+
 
         try {
             // Kirim request ke API eksternal Flask
@@ -34,7 +37,7 @@ class LoginController extends Controller
                 'User-Agent' => 'PostmanRuntime/7.42.0',
                 'Accept-Encoding' => 'gzip, deflate, br',
                 'Connection' => 'keep-alive',
-            ])->timeout(600)->post('http://localhost:5000/auth/login', [
+            ])->timeout(600)->post("$flaskUrl/auth/login", [
                 'email' => $email,
                 'password' => $password,
             ]);
