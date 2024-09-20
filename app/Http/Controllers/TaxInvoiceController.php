@@ -40,13 +40,14 @@ class TaxInvoiceController extends Controller
             ])->attach(
                 'doc_fp_img', file_get_contents($file->getRealPath()), $file->getClientOriginalName()
             )->timeout(600) // Set timeout to 60 seconds
-            ->post('$flaskUrl/ocr_api/v1/faktur_pajak', [
+            ->post('http://localhost:5000/ocr_api/v1/faktur_pajak', [
                 'is_url' => $isUrl,
             ]);
 
             // Tangkap dan decode JSON dari API eksternal
             $responseJson = $response->json();
             $invoices = $responseJson;
+            dd($invoices);
 
             // Simpan file ke folder public/scan/tax
             $imageName = $file->hashName();

@@ -1,3 +1,7 @@
-http://192.168.18.232:8000
+http://192.168.18.232:8123
 
 composer serve
+
+php artisan serve --host 192.168.18.232 --port 8123
+
+php artisan serve --host 192.168.18.232 

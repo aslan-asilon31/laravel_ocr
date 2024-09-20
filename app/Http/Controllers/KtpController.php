@@ -52,7 +52,7 @@ class KtpController extends Controller
                 'Authorization' => 'Bearer  '. $accessToken,
             ])->attach(
                 'doc_ktp_img', file_get_contents($movedFilePath), $fileName
-            )->timeout(600)->post('$flaskUrl/ocr_api/v2/ktp', [
+            )->timeout(600)->post('http://localhost:5000/ocr_api/v2/ktp', [
                 'is_url' => $isUrl,
                 'is_compare' => $isCompare,
                 'doc_ktp_url' => $docKtpUrl,
